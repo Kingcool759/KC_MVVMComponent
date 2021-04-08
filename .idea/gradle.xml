@@ -11,6 +11,17 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/library-base" />
+            <option value="$PROJECT_DIR$/library-network" />
+            <option value="$PROJECT_DIR$/library-res" />
+            <option value="$PROJECT_DIR$/library-service" />
+            <option value="$PROJECT_DIR$/m-collect" />
+            <option value="$PROJECT_DIR$/m-home" />
+            <option value="$PROJECT_DIR$/m-login" />
+            <option value="$PROJECT_DIR$/m-my" />
+            <option value="$PROJECT_DIR$/m-project" />
+            <option value="$PROJECT_DIR$/m-square" />
+            <option value="$PROJECT_DIR$/m-wx" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

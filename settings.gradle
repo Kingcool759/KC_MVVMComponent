@@ -1,2 +1,13 @@
+include ':library-service'
+include ':library-res'
+include ':library-network'
+include ':library-base'
+include ':m-collect'
+include ':m-project'
+include ':m-square'
+include ':m-wx'
+include ':m-my'
+include ':m-login'
+include ':m-home'
 include ':app'
 rootProject.name = "KC_MVVMComponent"
