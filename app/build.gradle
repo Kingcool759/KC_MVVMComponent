@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.alibaba.arouter'
 }
 
 android {
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.kc.mvvmcomponent"
-        minSdkVersion 23
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -33,7 +34,6 @@ android {
 }
 
 dependencies {
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -42,4 +42,26 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //组件化配置
+    implementation project(":library-base")
+    if (isBuildModule.toBoolean()) {
+        //当组件独立运行时，需要把基础库依赖到宿主app项目上
+    } else {
+
+        //如果是作为组件，需要把各个组件依赖到App宿主上
+
+        // app启动
+        implementation project(":m-splash")
+        // app首页
+        implementation project(":m-home")
+        // app用户
+        implementation project(":m-my")
+        //wx公众号
+        implementation project(":m-wx")
+        //广场
+        implementation project(":m-square")
+        //项目
+        implementation project(":m-project")
+    }
 }
