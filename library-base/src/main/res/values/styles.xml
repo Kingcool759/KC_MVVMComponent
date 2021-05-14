@@ -1,0 +1,36 @@
+<resources>
+
+    <style name="app_theme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/base_bg_transparent</item>
+    </style>
+
+    <color name="base_bg_transparent">#00000000</color> <!--全透明-->
+    <color name="base_half_transparent">#66000000</color><!--半透明-->
+    <style name="base_dialog_theme" parent="android:Theme.Dialog">
+        <!--        没有标题-->
+        <item name="windowNoTitle">true</item>
+        <!--        悬浮-->
+        <item name="android:windowIsFloating">true</item>
+        <!--        半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--        背景是否变暗-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--    是否有边框-->
+        <item name="android:windowFrame">@null</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="base_dialog_theme.transparent">
+        <item name="android:windowBackground">@color/base_bg_transparent</item>
+    </style>
+
+    <style name="base_loadingDialogTheme" parent="base_dialog_theme.transparent">
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="base_transparent">
+        <item name="android:windowBackground">@color/base_half_transparent</item>
+    </style>
+
+</resources>

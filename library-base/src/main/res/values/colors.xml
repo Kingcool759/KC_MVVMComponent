@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="gray">#707070</color>
+    <color name="black">#D3000000</color>
+    <color name="blue">#03A9F4</color>
+    <color name="pink">#F3719D</color>
+    <color name="red">#FFFF4444</color>
+    <color name="green">#7AD80C</color>
+    <!--全透明-->
+    <color name="transparent">#00000000</color>
+    <!--半透明-->
+    <color name="halfTransparent">#80000000</color>
+</resources>

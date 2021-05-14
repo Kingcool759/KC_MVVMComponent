@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.kc.library.base.base.BaseActivity
 import com.kc.library.base.router.RouterActivityPath
 import com.kc.library.base.router.RouterFragmentPath
 
 @Route(path = RouterActivityPath.Main.HOME_MAIN)
-class HomeMainActivity : AppCompatActivity() {
+class HomeMainActivity : BaseActivity() {
     private val mFragments = ArrayList<Fragment>()
     private var mBottomNav: BottomNavigationView? = null
     private var mPreFragmentFlag = 0
