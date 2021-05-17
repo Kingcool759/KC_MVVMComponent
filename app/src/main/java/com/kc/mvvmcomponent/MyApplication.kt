@@ -5,8 +5,9 @@ import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
+import com.kc.library.base.base.BaseApplication
 
-class MyApplication : Application() {
+open class MyApplication : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) {

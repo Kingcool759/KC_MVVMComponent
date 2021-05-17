@@ -1,61 +1,113 @@
-package com.kc.library.base.base;
+package com.kc.library.base.base
 
+
+import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
+import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.components.SimpleImmersionOwner
+import com.gyf.immersionbar.components.SimpleImmersionProxy
+import com.kc.library.base.R
+
 
 /**
- * @data on 4/28/21 9:58 AM
- * @auther KC
- * @describe BaseFragment，实现了Fragment懒加载
+ * @author : zhangqi
+ * @time : 2020/4/25
+ * desc :
  */
-open class BaseFragment : Fragment() {
+open class BaseFragment : Fragment(), SimpleImmersionOwner {
+    private var showing = false
+    private var touchable = false
 
-    //表明fragment是否显示
-    private var mIsVisibleToUser = false
-
-    //表明view是否被加载
-    private var mIsViewCreated = false
-
-    //表明data是否被加载
-    private var mIsDataLoaded = false
-
-    /**
-     * 是否view已被加载
-     */
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mIsViewCreated = true
-        //为了保证第一个fragment可见后加载数据，因为setUserVisibleHint() 要比 onViewCreated()要早执行.所以，fragment1数据无法被加载，当条件改变时，就需要懒加载。
-        lazyLoad()
+    //Fragment沉浸式的代理类
+    private val simpleImmersionProxy = SimpleImmersionProxy(this)
+    override fun onStart() {
+        super.onStart()
+        showing = true
     }
 
-    /**
-     * 懒加载的关键
-     * isVisibleToUser是否为true，则对应表明页面是否展示到当前Fragment。
-     */
+    override fun onResume() {
+        super.onResume()
+        touchable = true
+    }
+
+    override fun onPause() {
+        super.onPause()
+        touchable = false
+    }
+
+    override fun onStop() {
+        super.onStop()
+        showing = false
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        simpleImmersionProxy.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        simpleImmersionProxy.onConfigurationChanged(newConfig)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        simpleImmersionProxy.onDestroy()
+    }
+
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-        mIsVisibleToUser = isVisibleToUser
-        lazyLoad()  //fragment1并不满足mIsViewCreated
+        simpleImmersionProxy.isUserVisibleHint = isVisibleToUser
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        simpleImmersionProxy.onHiddenChanged(hidden)
     }
 
     /**
-     * view和data清除
+     * fragment是否可见
      */
-    override fun onDestroyView() {
-        super.onDestroyView()
-        mIsViewCreated = false
-        mIsDataLoaded = false
-    }
+    fun fragmentIsShowing(): Boolean = showing
 
-    fun lazyLoad() {
-        if (mIsViewCreated && mIsVisibleToUser && !mIsDataLoaded) {
-            initData()
-            mIsDataLoaded = true
+    /**
+     * fragment是否可触摸的
+     */
+    fun isTouchable(): Boolean = touchable
+
+    /**
+     * 用来控制Fragment快速实现沉浸式，当为true的时候才能去执行initImmersionBar()方法
+     */
+    override fun immersionBarEnabled(): Boolean = true
+
+    override fun initImmersionBar() {
+        val immersionBar = ImmersionBar.with(this).statusBarDarkFont(isDarkFont()).keyboardEnable(true)
+        immersionBar.fitsSystemWindows(isFitsSystemWindow())
+        if (isFitsSystemWindow()) {
+            immersionBar.statusBarColorInt(setStatusBarColor())
         }
+        immersionBar.navigationBarColorInt(Color.WHITE).init()
     }
 
-    //开放要加载的数据
-    open fun initData() {}
+    open fun isDarkFont(): Boolean {
+        return true
+    }
+
+    /**
+     * 防止状态栏和布局重叠的问题
+     */
+    open fun isFitsSystemWindow(): Boolean {
+        return true
+    }
+
+    /**
+     * 设置状态栏的颜色
+     */
+    open fun setStatusBarColor(): Int {
+        return resources.getColor(R.color.red)
+    }
+
 }

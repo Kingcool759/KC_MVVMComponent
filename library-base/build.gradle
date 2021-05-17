@@ -76,8 +76,8 @@ dependencies {
     kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
 
     //沉浸式状态栏统一管理
-    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
-    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+    api 'com.gyf.immersionbar:immersionbar:3.0.0'
+    api 'com.gyf.immersionbar:immersionbar-components:3.0.0'
 
     //刷新加载
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
@@ -94,8 +94,21 @@ dependencies {
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
 
+    //方法数+类数>65536解决办法
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
+    //okhttp网络日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
 
     // recyclerView的Databinding套装
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
     implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
+
+    //刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
 }

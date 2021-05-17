@@ -24,4 +24,7 @@ dependencies {
     implementation project(':library-base')
 
     kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
+
+    //刷新加载
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+        <variable
+            name="item"
+            type="com.kc.home.response.DataX" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_list_item"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="1dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_radius_4dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="10dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="10dp" />
+
+        <TextView
+            android:id="@+id/tv_share_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{item.author}"
+            tools:text="谷歌开发者"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/left_Guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_share_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            tools:text="时间"
+            android:text="@{item.niceShareDate}"
+            android:textSize="13sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_share_user"
+            app:layout_constraintRight_toRightOf="@id/right_Guideline" />
+
+        <TextView
+            android:id="@+id/tv_home_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{item.title}"
+            tools:text="标题标题标题标题标题标题标题标题标题标题标题标题标题标题"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@id/right_Guideline"
+            app:layout_constraintStart_toEndOf="@id/left_Guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_share_user" />
+
+        <TextView
+            android:id="@+id/tv_super_chapterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="公众号/郭霖"
+            android:text='@{item.superChapterName+"/"+item.chapterName}'
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintLeft_toLeftOf="@id/left_Guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_home_item_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
