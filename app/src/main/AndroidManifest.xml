@@ -3,11 +3,12 @@
     package="com.kc.mvvmcomponent">
 
     <application
-        android:name=".MyApplication"
+        android:name=".AppApplication"
         android:allowBackup="true"
+        android:icon="@mipmap/kcbyzjw"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KC_MVVMComponent"/>
+        android:theme="@style/app_theme"/>
 
 </manifest>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.kc.wx.response.DataX" />
+
+        <variable
+            name="viewModel"
+            type="com.kc.wx.WxAccountViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/shape_white_radius_4dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="1dp"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->viewModel.onItemClick(item)}"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="10dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="10dp" />
+
+        <TextView
+            android:id="@+id/public_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@{item.chapterName}"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/left_Guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="郭霖" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="@{item.niceDate}"
+            android:textSize="13sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/public_account"
+            app:layout_constraintEnd_toEndOf="@id/right_Guideline"
+            tools:text="2020-09-04 00:00" />
+
+        <TextView
+            android:id="@+id/public_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{item.title}"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/right_Guideline"
+            app:layout_constraintStart_toStartOf="@+id/left_Guideline"
+            app:layout_constraintTop_toBottomOf="@id/public_account"
+            tools:text="App为什么会crash？事情没有你想得那么简单" />
+
+        <TextView
+            android:id="@+id/type1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text='@{item.superChapterName+" / "+item.chapterName}'
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintStart_toStartOf="@+id/left_Guideline"
+            app:layout_constraintTop_toBottomOf="@id/public_title"
+            tools:text="公众号 / 果林" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/gray"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

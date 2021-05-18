@@ -20,6 +20,7 @@ class RouterFragmentPath {
     object Wx {
         private const val WX = "/wx"
         const val WX_FRAGMENT = "$WX/wx_fragment"
+        const val WX_ACCOUNTS = "$WX/wx_account_fragment"
     }
 
     /**

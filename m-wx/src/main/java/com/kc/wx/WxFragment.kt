@@ -1,22 +1,41 @@
 package com.kc.wx
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
+import com.kc.library.base.adapter.PublicTabAdapter
+import com.kc.library.base.base.BaseMvvMFragment
 import com.kc.library.base.router.RouterFragmentPath
+import com.kc.wx.databinding.FragmentWxBinding
 
 @Route(path = RouterFragmentPath.Wx.WX_FRAGMENT)
-class WxFragment : Fragment() {
+class WxFragment : BaseMvvMFragment<FragmentWxBinding, WxViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wx, container, false)
+    val fragments = ArrayList<Fragment>()
+    val titles = ArrayList<String>()
+
+    override fun onLoad(view: View) {
+        super.onLoad(view)
+        viewModel.getWxCodeList()
+        setTabLayout()
     }
 
+    //设置TabLayout和ViewPager
+    fun setTabLayout() {
+        viewModel.items.observe(this, { item ->
+            item.forEach {
+                dataBinding.tablayout.addTab(dataBinding.tablayout.newTab().setText(it.name))
+                fragments.add(
+                    ARouter.getInstance().build(RouterFragmentPath.Wx.WX_ACCOUNTS)
+                        .withInt("account_id", it.id)
+                        .navigation() as Fragment
+                )
+                titles.add(it.name)
+            }
+            dataBinding.viewPager.adapter =
+                PublicTabAdapter(childFragmentManager, fragments, titles)
+            dataBinding.tablayout.setupWithViewPager(dataBinding.viewPager)
+        })
+    }
 }

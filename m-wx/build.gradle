@@ -25,4 +25,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
+
+    //刷新加载
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
 }

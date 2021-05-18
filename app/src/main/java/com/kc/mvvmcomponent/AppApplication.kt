@@ -6,8 +6,12 @@ import android.os.Bundle
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.kc.library.base.base.BaseApplication
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.FormatStrategy
+import com.orhanobut.logger.Logger
+import com.orhanobut.logger.PrettyFormatStrategy
 
-open class MyApplication : BaseApplication() {
+open class AppApplication : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) {
@@ -17,6 +21,16 @@ open class MyApplication : BaseApplication() {
             ARouter.openLog()
         }
         ARouter.init(this)
+
+        //自定义炫酷Logger
+        val formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
+            .showThreadInfo(true) // (Optional) Whether to show thread info or not. Default true
+            .methodCount(5) // (Optional) How many method line to show. Default 2
+            .methodOffset(7) // (Optional) Hides internal method calls up to offset. Default 5
+            .tag("My custom tag") // (Optional) Global tag for every log. Default PRETTY_LOGGER
+            .build()
+        Logger.addLogAdapter(AndroidLogAdapter(formatStrategy)) // 初始化Logger
+
         instance = this
 
         //打印被创建的Activity名称

@@ -4,7 +4,7 @@ import android.app.Application
 
 /**
  * @data on 5/14/21 4:10 PM
- * @auther
+ * @auther KC
  * @describe
  */
 open class BaseApplication : Application() {

@@ -83,7 +83,9 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
 
     //炫酷Logger
-    implementation 'com.orhanobut:logger:2.1.1'
+    api 'com.orhanobut:logger:2.1.1'
+    //okhttp网络日志拦截器
+    api 'com.squareup.okhttp3:logging-interceptor:3.12.0'
 
     //lifecycler
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'

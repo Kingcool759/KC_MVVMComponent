@@ -9,8 +9,8 @@ import com.kc.library.base.network.NetworkPortal
 
 /**
  * @data on 5/14/21 4:40 PM
- * @auther
- * @describe
+ * @auther KC
+ * @describe  首页
  */
 class HomeViewModel(application: Application) :BasePageViewModel<DataX>(application) {
 
@@ -21,6 +21,7 @@ class HomeViewModel(application: Application) :BasePageViewModel<DataX>(applicat
     override fun requestData(page: Int) {
         NetworkPortal.getService(HomeService::class.java)?.getHomeArticles2(page)?.enqueue(
             LiveDataCallback<HomeArticlesResp>(baseLiveData)
+                .bindLoading()
                 .bindSmartRefresh()
                 .bindStateLayout()
                 .doOnResponseSuccess { _, response ->

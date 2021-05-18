@@ -10,7 +10,12 @@ import com.kc.library.base.network.AppApi
 object WxApi {
 
     /**
-     *   获取wanAndroid网站公众号列表：
+     *  公众号名称
      */
     const val OFFITIAL_ACCOUNTS = "wxarticle/chapters/json"
+
+    /**
+     *  公众号列表
+     */
+    const val ACCOUNT_DETAIL = "wxarticle/list/{id}/{page}/json"
 }

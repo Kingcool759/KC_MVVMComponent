@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kc.home">
     <application>
-        <activity android:name=".HomeMainActivity" android:launchMode="singleInstance"/>
+        <activity android:name=".HomeMainActivity" android:launchMode="singleInstance"
+            android:theme="@style/app_theme"/>
     </application>
 </manifest>

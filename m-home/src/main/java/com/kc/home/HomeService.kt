@@ -13,8 +13,6 @@ import retrofit2.http.Path
  */
 interface HomeService {
 
-    val baseUrl: String get() = AppApi.BaseURL
-
     /**
      * 获取wanandroid首页文章列表
      */

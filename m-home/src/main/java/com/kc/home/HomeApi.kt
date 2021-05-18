@@ -2,7 +2,7 @@ package com.kc.home
 
 /**
  * @data on 5/14/21 4:31 PM
- * @auther
+ * @auther KC
  * @describe
  */
 object HomeApi {
