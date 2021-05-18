@@ -39,4 +39,12 @@
         <item name="android:windowBackground">@color/base_half_transparent</item>
     </style>
 
+    <!--闪屏页-->
+    <style name="entrance_splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
 </resources>

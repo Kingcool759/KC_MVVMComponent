@@ -10,13 +10,8 @@ import com.kc.library.base.router.RouterActivityPath
  * 闪屏页
  */
 class SplashActivity : BaseActivity() {
-
-    override fun setStatusBarColorInt(): Int = R.color.green
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
         Handler().postDelayed({
             ARouter.getInstance().build(RouterActivityPath.Main.HOME_MAIN).navigation()
             finish()
