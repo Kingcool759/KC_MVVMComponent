@@ -1,23 +1,41 @@
-package com.kc.project;
+package com.kc.project.fragment
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.kc.library.base.router.RouterFragmentPath;
+import android.view.View
+import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
+import com.kc.library.base.adapter.PublicTabAdapter
+import com.kc.library.base.base.BaseMvvMFragment
+import com.kc.library.base.router.RouterFragmentPath
+import com.kc.project.viewmodel.ProjectViewModel
+import com.kc.project.databinding.FragmentProjectBinding
 
 @Route(path = RouterFragmentPath.Project.PROJECT_FRAGMENT)
-public class ProjectFragment extends Fragment {
+class ProjectFragment : BaseMvvMFragment<FragmentProjectBinding, ProjectViewModel>() {
+    val fragments = ArrayList<Fragment>()
+    val titles = ArrayList<String>()
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_project, container, false);
+    override fun onLoad(view: View) {
+        super.onLoad(view)
+        viewModel.getProjectList()
+        setTabLayout()
+    }
+
+    //设置TabLayout和ViewPager
+    fun setTabLayout() {
+        viewModel.items.observe(this, { item ->
+            item.forEach {
+                dataBinding.tablayout.addTab(dataBinding.tablayout.newTab().setText(it.name))
+                fragments.add(
+                    ARouter.getInstance().build(RouterFragmentPath.Project.PROJECT_DETAIL)
+                        .withInt("cid", it.id)
+                        .navigation() as Fragment
+                )
+                titles.add(it.name)
+            }
+            dataBinding.viewPager.adapter =
+                PublicTabAdapter(childFragmentManager, fragments, titles)
+            dataBinding.tablayout.setupWithViewPager(dataBinding.viewPager)
+        })
     }
 }

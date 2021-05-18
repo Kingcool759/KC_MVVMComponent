@@ -37,6 +37,7 @@ class RouterFragmentPath {
     object Project {
         private const val PROJECT = "/project"
         const val PROJECT_FRAGMENT = "$PROJECT/project_fragment"
+        const val PROJECT_DETAIL = "$PROJECT/project_Detail"
     }
 
     /**

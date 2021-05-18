@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.kc.project.response.DataX" />
+        <variable
+            name="viewModel"
+            type="com.kc.project.viewmodel.ProDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="1dp"
+        android:background="@drawable/shape_white_radius_4dp"
+        android:onClick="@{()->viewModel.onItemClick(item)}"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="10dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="10dp" />
+
+        <TextView
+            android:id="@+id/project_auther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@{item.author}"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/left_Guideline"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="LvKang-insist" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.niceDate}"
+            android:textSize="13sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/project_auther"
+            app:layout_constraintEnd_toEndOf="@id/right_Guideline"
+            tools:text="2020-09-04 00:00" />
+
+        <ImageView
+            android:id="@+id/project_image"
+            exImageUrl="@{item.envelopePic}"
+            android:layout_width="70dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@id/left_Guideline"
+            app:layout_constraintTop_toBottomOf="@id/project_auther"
+            tools:src="@mipmap/default_project_img" />
+
+        <TextView
+            android:id="@+id/project_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@{item.title}"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            app:layout_constraintBottom_toTopOf="@id/project_title_desc"
+            app:layout_constraintLeft_toRightOf="@+id/project_image"
+            app:layout_constraintTop_toTopOf="@id/project_image"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="20dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="基于 Kotlin+MVP 的Wandroid基于 Kotlin+MVP 的Wandroid基于 Kotlin+MVP 的Wandroid基于 Kotlin+MVP 的Wandroid" />
+
+        <TextView
+            android:id="@+id/project_title_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="@{item.desc}"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@id/project_image"
+            app:layout_constraintEnd_toEndOf="@id/right_Guideline"
+            android:layout_marginRight="20dp"
+            app:layout_constraintStart_toEndOf="@+id/project_image"
+            app:layout_constraintTop_toBottomOf="@id/project_title"
+            tools:text="基于鸿洋大佬的API，项目基于 Kotlin + MVP基于 Kotlin+MVP 的Wandroid基于 Kotlin+MVP 的Wandroid基于 Kotlin+MVP 的Wandroid基于 Kotlin+MVP 的Wandroid基于 Kotlin+MVP 的Wandroid" />
+
+        <TextView
+            android:id="@+id/type1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text='@{item.superChapterName+" / "+item.chapterName}'
+            android:textSize="13sp"
+            android:paddingBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/left_Guideline"
+            app:layout_constraintTop_toBottomOf="@id/project_image"
+            tools:text="开源项目主Tab / 完整项目" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
