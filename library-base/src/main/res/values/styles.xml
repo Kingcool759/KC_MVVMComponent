@@ -1,7 +1,6 @@
 <resources>
 
     <style name="app_theme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/base_bg_transparent</item>
     </style>
 
     <!--公众号tab主题，防止text全为英文大写-->
