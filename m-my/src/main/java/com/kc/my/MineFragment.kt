@@ -1,19 +1,24 @@
 package com.kc.my
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.google.android.material.appbar.AppBarLayout
+import com.kc.library.base.base.BaseMvvMFragment
 import com.kc.library.base.router.RouterFragmentPath
+import com.kc.my.databinding.FragmentMineBinding
 
 @Route(path = RouterFragmentPath.User.MINE_FRAGMENT)
-class MineFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.my_fragment_main, container, false)
+class MineFragment : BaseMvvMFragment<FragmentMineBinding, MineViewModel>() {
+    override fun isFitsSystemWindow(): Boolean = false
+    override fun onLoad(view: View) {
+        super.onLoad(view)
+        //滑动监听事件
+        dataBinding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if (verticalOffset < -500) {
+                dataBinding.endScrollContentView.visibility = View.VISIBLE
+            } else {
+                dataBinding.endScrollContentView.visibility = View.INVISIBLE
+            }
+        })
     }
 }

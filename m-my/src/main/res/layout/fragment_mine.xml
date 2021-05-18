@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kc.my.MineViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
+        tools:ignore="MissingDefaultResource">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="265dp"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collsping_Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/base_bg_transparent"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentScrim="@color/base_bg_transparent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <!--指定的具体内容-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="265dp"
+                    tools:ignore="MissingConstraints">
+
+                    <ImageView
+                        android:id="@+id/userBgImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="265dp"
+                        android:background="@color/white"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/user_img"
+                        tools:ignore="MissingConstraints" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/userImage"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_margin="30dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/user_img"
+                        app:layout_constraintTop_toTopOf="@id/userBgImage"
+                        app:layout_constraintBottom_toBottomOf="@id/userBgImage"
+                        app:layout_constraintLeft_toLeftOf="@id/userBgImage"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="kingcool"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintLeft_toLeftOf="@id/userImage"
+                        app:layout_constraintRight_toRightOf="@id/userImage"
+                        app:layout_constraintTop_toBottomOf="@id/userImage"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/base_bg_transparent"
+                    app:layout_collapseMode="pin">
+
+                    <!--推上去之后展示的toolbar-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/endScrollContentView"
+                        android:layout_width="match_parent"
+                        android:background="@color/base_bg_transparent"
+                        android:layout_height="match_parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/userImageSmall"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/user_img"
+                            android:layout_marginBottom="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="kingcool"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="@id/userImageSmall"
+                            app:layout_constraintLeft_toRightOf="@id/userImageSmall"
+                            app:layout_constraintTop_toTopOf="@id/userImageSmall"
+                            tools:ignore="MissingConstraints" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:itemBinding="@{viewModel.itemBinding}"
+            app:items="@{viewModel.items}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            tools:ignore="MissingConstraints"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_mine" />
+        <!--        <androidx.core.widget.NestedScrollView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/appBar"-->
+        <!--            tools:ignore="MissingConstraints">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:orientation="vertical">-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="200dp"-->
+        <!--                    android:background="@color/red" />-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="200dp"-->
+        <!--                    android:background="@color/blue" />-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="200dp"-->
+        <!--                    android:background="@color/green" />-->
+
+        <!--            </LinearLayout>-->
+
+        <!--        </androidx.core.widget.NestedScrollView>-->
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -43,6 +43,7 @@
     <style name="entrance_splash" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:scaleType">centerCrop</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
