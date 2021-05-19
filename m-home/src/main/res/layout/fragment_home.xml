@@ -14,37 +14,54 @@
             type="com.kc.home.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".HomeFragment"
         tools:ignore="MissingDefaultResource">
 
-        <com.hjq.bar.TitleBar
-            android:id="@+id/toolBar"
-            android:layout_width="wrap_content"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/shape_gradient_qq"
-            app:barStyle="transparent"
-            app:leftBackground="@null"
-            app:rightBackground="@null"
-            app:rightIcon="@drawable/ic_icon_search"
-            app:title="首页"
-            app:titleSize="20sp"
-            app:titleColor="@null"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collsping_Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/base_bg_transparent"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentScrim="@color/base_bg_transparent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <com.hjq.bar.TitleBar
+                    android:id="@+id/toolBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@drawable/shape_gradient_qq"
+                    app:barStyle="transparent"
+                    app:leftBackground="@null"
+                    app:rightBackground="@null"
+                    app:rightIcon="@drawable/ic_icon_search"
+                    app:title="首页"
+                    app:titleColor="@null"
+                    app:titleSize="20sp"
+                    tools:ignore="MissingConstraints" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            app:layout_constraintTop_toBottomOf="@id/toolBar"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/refreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
             loadMoreListener="@{()->viewModel.loadMore()}"
             loadMoreState="@{viewModel.loadMoreState}"
             refreshListener="@{()->viewModel.refresh()}"
-            refreshState="@{viewModel.refreshState}">
+            refreshState="@{viewModel.refreshState}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintTop_toBottomOf="@id/toolBar">
 
             <androidx.recyclerview.widget.RecyclerView
                 itemBinding="@{viewModel.itemBinding}"
@@ -52,7 +69,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/gray"
-                android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -61,5 +77,5 @@
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
