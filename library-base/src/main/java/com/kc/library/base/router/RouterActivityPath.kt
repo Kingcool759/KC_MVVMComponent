@@ -28,4 +28,20 @@ class RouterActivityPath {
         private const val WEBVIEW = "/webview"
         const val WEBVIEW_ACTIVITY = "$WEBVIEW/webview_activity"
     }
+
+    /**
+     * 收藏组件
+     */
+    object Collect{
+        private const val COLLECT = "/Collect"
+        const val COLLECT_ACTIVITY = "$COLLECT/collect_activity"
+    }
+
+    /**
+     * 搜索组件
+     */
+    object Search{
+        private const val SEARCH = "/Search"
+        const val SEARCH_ACTIVITY = "$SEARCH/search_activity"
+    }
 }

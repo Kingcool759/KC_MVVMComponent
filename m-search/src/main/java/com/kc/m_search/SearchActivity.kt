@@ -1,22 +1,22 @@
-package com.kc.square
+package com.kc.m_search
 
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.hjq.bar.OnTitleBarListener
-import com.kc.library.base.base.BaseMvvMFragment
+import com.kc.library.base.base.BaseMvvmActivity
 import com.kc.library.base.router.RouterActivityPath
-import com.kc.library.base.router.RouterFragmentPath
-import com.kc.square.databinding.FragmentSquareBinding
+import com.kc.m_search.databinding.ActivitySearchBinding
 
-@Route(path = RouterFragmentPath.Square.SQUARE_FRAGMENT)
-class SquareFragment : BaseMvvMFragment<FragmentSquareBinding,SquareViewModel>() {
-    override fun onLoad(view: View) {
-        super.onLoad(view)
+@Route(path = RouterActivityPath.Search.SEARCH_ACTIVITY)
+class SearchActivity : BaseMvvmActivity<ActivitySearchBinding,SearchViewModel>() {
+
+    override fun onLoad(viewModel: SearchViewModel) {
+        super.onLoad(viewModel)
         dataBinding.toolBar.setOnTitleBarListener(object : OnTitleBarListener {
             override fun onLeftClick(v: View) {
                 //左边
-//                activity?.finish()
+                finish()
             }
 
             override fun onTitleClick(v: View) {
@@ -25,7 +25,6 @@ class SquareFragment : BaseMvvMFragment<FragmentSquareBinding,SquareViewModel>()
 
             override fun onRightClick(v: View) {
                 //右边
-                ARouter.getInstance().build(RouterActivityPath.Search.SEARCH_ACTIVITY).navigation()
             }
         })
     }

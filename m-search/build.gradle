@@ -3,7 +3,7 @@ apply from: "../module.build.gradle"
 android {
     defaultConfig {
         if (isBuildModule.toBoolean()) {
-            applicationId "com.kc.collect"
+            applicationId "com.kc.search"
         }
     }
 }

@@ -58,14 +58,14 @@ open class BaseActivity : AppCompatActivity() {
      * 设置状态栏的颜色
      */
     open fun setStatusBarColorInt(): Int {
-        return resources.getColor(R.color.red)
+        return resources.getColor(R.color.base_bg_transparent)  //全透明
     }
 
     /**
      * 为了防止布局和顶部的状态栏重叠
      */
     open fun isFitsSystemWindows(): Boolean {
-        return false
+        return true   //false表明占据状态栏,true不占据
     }
 
 }

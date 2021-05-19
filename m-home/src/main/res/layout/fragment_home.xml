@@ -41,6 +41,7 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="@drawable/shape_gradient_qq"
                     app:barStyle="transparent"
+                    app:leftIcon="@null"
                     app:leftBackground="@null"
                     app:rightBackground="@null"
                     app:rightIcon="@drawable/ic_icon_search"

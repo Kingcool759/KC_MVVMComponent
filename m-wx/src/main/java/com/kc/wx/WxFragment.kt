@@ -4,8 +4,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.hjq.bar.OnTitleBarListener
 import com.kc.library.base.adapter.PublicTabAdapter
 import com.kc.library.base.base.BaseMvvMFragment
+import com.kc.library.base.router.RouterActivityPath
 import com.kc.library.base.router.RouterFragmentPath
 import com.kc.wx.databinding.FragmentWxBinding
 
@@ -19,6 +21,22 @@ class WxFragment : BaseMvvMFragment<FragmentWxBinding, WxViewModel>() {
         super.onLoad(view)
         viewModel.getWxCodeList()
         setTabLayout()
+
+        dataBinding.toolBar.setOnTitleBarListener(object : OnTitleBarListener {
+            override fun onLeftClick(v: View) {
+                //左边
+//                activity?.finish()
+            }
+
+            override fun onTitleClick(v: View) {
+                //中间
+            }
+
+            override fun onRightClick(v: View) {
+                //右边
+                ARouter.getInstance().build(RouterActivityPath.Search.SEARCH_ACTIVITY).navigation()
+            }
+        })
     }
 
     //设置TabLayout和ViewPager

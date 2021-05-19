@@ -74,5 +74,7 @@ dependencies {
         implementation project(":m-project")
         // webView
         implementation project(":m-webview")
+        // 搜索
+        implementation project(":m-search")
     }
 }
