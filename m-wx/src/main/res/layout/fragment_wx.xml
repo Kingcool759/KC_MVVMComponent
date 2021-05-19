@@ -7,52 +7,60 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".WxFragment">
 
-        <com.hjq.bar.TitleBar
-            android:id="@+id/toolBar"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/shape_gradient_qq"
-            app:barStyle="transparent"
-            app:leftBackground="@null"
-            app:rightBackground="@null"
-            app:rightIcon="@drawable/ic_icon_search"
-            app:title="公众号"
-            app:titleSize="20sp"
-            app:titleColor="@null"
-            tools:ignore="MissingConstraints" />
-
-        <com.google.android.material.tabs.TabLayout
-            app:layout_constraintTop_toBottomOf="@id/toolBar"
-            android:id="@+id/tablayout"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue"
-            android:paddingBottom="5dp"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/white"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="2dp"
-            app:tabMode="scrollable"
-            app:tabRippleColor="@android:color/transparent"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextAppearance="@style/tab_theme"
-            app:tabTextColor="@color/black"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints">
+
+
+            <com.hjq.bar.TitleBar
+                android:id="@+id/toolBar"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/shape_gradient_qq"
+                app:barStyle="transparent"
+                app:layout_scrollFlags="scroll"
+                app:leftBackground="@null"
+                app:leftIcon="@null"
+                app:rightBackground="@null"
+                app:rightIcon="@drawable/ic_icon_search"
+                app:title="公众号"
+                app:titleColor="@null"
+                app:titleSize="20sp"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:paddingBottom="5dp"
+                app:layout_scrollFlags="noScroll"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextAppearance="@style/tab_theme"
+                app:tabTextColor="@color/black"
+                tools:ignore="MissingConstraints" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:background="@color/gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tablayout" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -7,54 +7,60 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragment.ProjectFragment"
         tools:ignore="MissingDefaultResource">
 
-        <com.hjq.bar.TitleBar
-            android:id="@+id/toolBar"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/shape_gradient_qq"
-            app:barStyle="transparent"
-            app:leftBackground="@null"
-            app:rightBackground="@null"
-            app:rightIcon="@drawable/ic_icon_search"
-            app:title="项目"
-            app:titleSize="20sp"
-            app:titleColor="@null"
-            tools:ignore="MissingConstraints" />
-
-        <com.google.android.material.tabs.TabLayout
-            app:tabTextAppearance="@style/tab_theme"
-            app:layout_constraintTop_toBottomOf="@id/toolBar"
-            android:id="@+id/tablayout"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/blue"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/white"
-            app:tabIndicatorHeight="2dp"
-            android:paddingBottom="5dp"
-            app:tabIndicatorFullWidth="false"
-            android:textAllCaps="false"
-            app:tabMode="scrollable"
-            app:tabRippleColor="@android:color/transparent"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/black"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="wrap_content">
 
+            <com.hjq.bar.TitleBar
+                android:id="@+id/toolBar"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/shape_gradient_qq"
+                app:barStyle="transparent"
+                app:layout_scrollFlags="scroll"
+                app:leftBackground="@null"
+                app:rightBackground="@null"
+                app:rightIcon="@drawable/ic_icon_search"
+                app:title="项目"
+                app:titleSize="20sp"
+                app:titleColor="@null"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.tabs.TabLayout
+                app:tabTextAppearance="@style/tab_theme"
+                app:layout_constraintTop_toBottomOf="@id/toolBar"
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                app:tabGravity="fill"
+                app:layout_scrollFlags="noScroll"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorHeight="2dp"
+                android:paddingBottom="5dp"
+                app:tabIndicatorFullWidth="false"
+                android:textAllCaps="false"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/black"
+                tools:ignore="MissingConstraints" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:background="@color/gray"
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tablayout" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

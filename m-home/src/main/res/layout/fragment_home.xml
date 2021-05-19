@@ -26,31 +26,22 @@
             android:layout_height="?attr/actionBarSize"
             tools:ignore="MissingConstraints">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collsping_Toolbar"
-                android:layout_width="match_parent"
+            <com.hjq.bar.TitleBar
+                android:id="@+id/toolBar"
+                android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/base_bg_transparent"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:contentScrim="@color/base_bg_transparent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                android:background="@drawable/shape_gradient_qq"
+                app:barStyle="transparent"
+                app:layout_scrollFlags="scroll"
+                app:leftBackground="@null"
+                app:leftIcon="@null"
+                app:rightBackground="@null"
+                app:rightIcon="@drawable/ic_icon_search"
+                app:title="首页"
+                app:titleColor="@null"
+                app:titleSize="20sp"
+                tools:ignore="MissingConstraints" />
 
-                <com.hjq.bar.TitleBar
-                    android:id="@+id/toolBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@drawable/shape_gradient_qq"
-                    app:barStyle="transparent"
-                    app:leftIcon="@null"
-                    app:leftBackground="@null"
-                    app:rightBackground="@null"
-                    app:rightIcon="@drawable/ic_icon_search"
-                    app:title="首页"
-                    app:titleColor="@null"
-                    app:titleSize="20sp"
-                    tools:ignore="MissingConstraints" />
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
