@@ -12,7 +12,23 @@
         android:layout_height="match_parent"
         tools:context=".WxFragment">
 
+        <com.hjq.bar.TitleBar
+            android:id="@+id/toolBar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_gradient_qq"
+            app:barStyle="transparent"
+            app:leftBackground="@null"
+            app:rightBackground="@null"
+            app:rightIcon="@drawable/ic_icon_search"
+            app:title="公众号"
+            app:titleSize="20sp"
+            app:titleColor="@null"
+            tools:ignore="MissingConstraints" />
+
         <com.google.android.material.tabs.TabLayout
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -13,8 +13,24 @@
         tools:context=".fragment.ProjectFragment"
         tools:ignore="MissingDefaultResource">
 
+        <com.hjq.bar.TitleBar
+            android:id="@+id/toolBar"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/shape_gradient_qq"
+            app:barStyle="transparent"
+            app:leftBackground="@null"
+            app:rightBackground="@null"
+            app:rightIcon="@drawable/ic_icon_search"
+            app:title="项目"
+            app:titleSize="20sp"
+            app:titleColor="@null"
+            tools:ignore="MissingConstraints" />
+
         <com.google.android.material.tabs.TabLayout
             app:tabTextAppearance="@style/tab_theme"
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

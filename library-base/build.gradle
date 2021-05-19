@@ -119,4 +119,7 @@ dependencies {
 
     //图片圆形处理
     api 'de.hdodenhof:circleimageview:3.1.0'
+
+    //TitelBar
+    api 'com.hjq:titlebar:6.5'
 }
