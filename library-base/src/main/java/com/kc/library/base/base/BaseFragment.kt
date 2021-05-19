@@ -107,7 +107,7 @@ open class BaseFragment : Fragment(), SimpleImmersionOwner {
      * 设置状态栏的颜色
      */
     open fun setStatusBarColor(): Int {
-        return resources.getColor(R.color.red)
+        return resources.getColor(R.color.base_bg_transparent)
     }
 
 }

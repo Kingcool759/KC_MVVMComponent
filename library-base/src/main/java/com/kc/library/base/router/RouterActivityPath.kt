@@ -20,4 +20,12 @@ class RouterActivityPath {
     object Login {
         private const val Login = "/login"
     }
+
+    /**
+     * webView组件
+     */
+    object WebView{
+        private const val WEBVIEW = "/webview"
+        const val WEBVIEW_ACTIVITY = "$WEBVIEW/webview_activity"
+    }
 }

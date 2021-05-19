@@ -8,12 +8,16 @@
         <variable
             name="item"
             type="com.kc.square.response.DataX" />
+        <variable
+            name="viewModel"
+            type="com.kc.square.SquareViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/square_list_item"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="5dp"
+        android:onClick="@{()->viewModel.onItemClick(item)}"
         android:layout_marginVertical="1dp"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_white_radius_4dp">

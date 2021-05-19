@@ -2,9 +2,12 @@ package com.kc.wx
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import com.alibaba.android.arouter.launcher.ARouter
 import com.kc.library.base.base.BasePageViewModel
 import com.kc.library.base.callback.LiveDataCallback
 import com.kc.library.base.network.NetworkPortal
+import com.kc.library.base.router.RouterActivityPath
+import com.kc.library.base.router.RouterFragmentPath
 import com.kc.wx.response.DataX
 import com.kc.wx.response.WxAccountsDetail
 
@@ -36,6 +39,8 @@ class WxAccountViewModel(application: Application,var id: Int) : BasePageViewMod
     }
 
     fun onItemClick(item : DataX){
-
+        ARouter.getInstance().build(RouterActivityPath.WebView.WEBVIEW_ACTIVITY)
+            .withString("url",item.link)
+            .navigation()
     }
 }

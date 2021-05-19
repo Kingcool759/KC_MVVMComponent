@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,29 +13,28 @@
         tools:context=".WxFragment">
 
         <com.google.android.material.tabs.TabLayout
-            app:tabTextAppearance="@style/tab_theme"
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue"
+            android:paddingBottom="5dp"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/white"
-            app:tabIndicatorHeight="2dp"
-            android:paddingBottom="5dp"
             app:tabIndicatorFullWidth="false"
-            android:textAllCaps="false"
+            app:tabIndicatorHeight="2dp"
             app:tabMode="scrollable"
             app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@style/tab_theme"
             app:tabTextColor="@color/black"
             tools:ignore="MissingConstraints" />
 
 
         <androidx.viewpager.widget.ViewPager
-            android:background="@color/gray"
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tablayout" />
 

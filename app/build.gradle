@@ -60,17 +60,19 @@ dependencies {
 
         //如果是作为组件，需要把各个组件依赖到App宿主上
 
-        // app启动
+        // 启动页
         implementation project(":m-splash")
-        // app首页
+        // 首页
         implementation project(":m-home")
-        // app用户
+        // 用户
         implementation project(":m-my")
-        //wx公众号
+        // 公众号
         implementation project(":m-wx")
-        //广场
+        // 广场
         implementation project(":m-square")
-        //项目
+        // 项目
         implementation project(":m-project")
+        // webView
+        implementation project(":m-webview")
     }
 }

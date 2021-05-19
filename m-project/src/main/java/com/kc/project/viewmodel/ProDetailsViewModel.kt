@@ -1,9 +1,12 @@
 package com.kc.project.viewmodel
 
 import android.app.Application
+import com.alibaba.android.arouter.launcher.ARouter
 import com.kc.library.base.base.BasePageViewModel
 import com.kc.library.base.callback.LiveDataCallback
 import com.kc.library.base.network.NetworkPortal
+import com.kc.library.base.router.RouterActivityPath
+import com.kc.library.base.router.RouterFragmentPath
 import com.kc.project.service.ProjectService
 import com.kc.project.R
 import com.kc.project.response.DataX
@@ -36,6 +39,8 @@ class ProDetailsViewModel(application: Application,var cid:Int) : BasePageViewMo
     }
 
     fun onItemClick(item : DataX){
-
+        ARouter.getInstance().build(RouterActivityPath.WebView.WEBVIEW_ACTIVITY)
+            .withString("url",item.link)
+            .navigation()
     }
 }
