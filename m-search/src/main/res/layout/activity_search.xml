@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.kc.m_search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,19 +14,66 @@
         android:layout_height="match_parent"
         tools:context=".SearchActivity">
 
-        <com.hjq.bar.TitleBar
-            android:id="@+id/toolBar"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/shape_gradient_qq"
-            app:barStyle="transparent"
-            app:leftBackground="@null"
-            app:rightBackground="@null"
-            app:title="搜索"
-            app:titleSize="20sp"
-            app:titleColor="@null"
-            tools:ignore="MissingConstraints" />
+        <!--搜索栏-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:src="@mipmap/ic_black_arrow"
+                app:layout_constraintBottom_toBottomOf="@id/etSearch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/etSearch" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@mipmap/doctor_search"
+                android:hint="请输入关键字"
+                android:imeOptions="actionSearch"
+                android:paddingStart="43dp"
+                android:singleLine="true"
+                android:text=""
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivBack"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginRight="16dp"
+                android:paddingLeft="43dp" />
+
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/ic_icon_search"
+                app:layout_constraintBottom_toBottomOf="@id/etSearch"
+                app:layout_constraintStart_toStartOf="@id/etSearch"
+                app:layout_constraintTop_toTopOf="@id/etSearch"
+                android:layout_marginLeft="16dp" />
+
+            <ImageView
+                android:id="@+id/ivClear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@mipmap/ic_clear"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/etSearch"
+                app:layout_constraintRight_toRightOf="@id/etSearch"
+                app:layout_constraintTop_toTopOf="@id/etSearch" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

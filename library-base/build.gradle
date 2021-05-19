@@ -64,15 +64,15 @@ dependencies {
     //公用资源在base中依赖
     api project(':library-res')
     //核心基础库(由于这是例子, 所以这里采用远程依赖的方式, 可根据实际情况自行换成源码依赖，源码地址：https://github.com/goldze/MVVMHabit)
-    api rootProject.ext.dependencies.MVVMHabit
+//    api rootProject.ext.dependencies.MVVMHabit  //不用他的，自己定义抽离Base层
     //阿里路由框架
     api rootProject.ext.dependencies["arouter-api"]
 
     //BottomNavigationView
-    implementation 'com.google.android.material:material:1.2.1'
+    api 'com.google.android.material:material:1.2.1'
 
     //ARout
-    implementation 'com.alibaba:arouter-api:1.5.0'
+    api 'com.alibaba:arouter-api:1.5.0'
     kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
 
     //沉浸式状态栏统一管理
@@ -93,26 +93,26 @@ dependencies {
     //Databinding
     kapt "com.android.databinding:compiler:3.1.4"
     // recyclerView的Databinding套装
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
+    api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
+    api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
 
     //方法数+类数>65536解决办法
-    implementation 'com.android.support:multidex:1.0.3'
+    api 'com.android.support:multidex:1.0.3'
 
     //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    api 'com.squareup.retrofit2:retrofit:2.6.0'
+    api 'com.squareup.retrofit2:converter-gson:2.5.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 
     //okhttp网络日志拦截器
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.12.0'
 
     // recyclerView的Databinding套装
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
+    api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:4.0.0'
+    api 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:4.0.0'
 
     //刷新
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
 
     //Glide
     api 'com.github.bumptech.glide:glide:4.11.0'
@@ -122,4 +122,8 @@ dependencies {
 
     //TitelBar
     api 'com.hjq:titlebar:6.5'
+
+    //带历史记录的搜索框
+    api 'com.carson_ho:SearchLayout:1.0.1'
+
 }
