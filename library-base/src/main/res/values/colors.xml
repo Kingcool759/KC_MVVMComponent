@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#ffffff</color>
+    <color name="white_dd">#ddFFFFFF</color>
     <color name="gray">#707070</color>
     <color name="black">#D3000000</color>
     <color name="blue">#03A9F4</color>
@@ -10,5 +11,10 @@
     <!--全透明-->
     <color name="transparent">#00000000</color>
     <!--半透明-->
-    <color name="halfTransparent">#80000000</color>
+    <color name="halfTransparent">#88000000</color>
+
+    <!--UI骨架使用-->
+    <color name="colorLine">#dfdfdf</color>
+    <color name="dark_transparent">#24000000</color>
+    <color name="light_transparent">#16000000</color>
 </resources>

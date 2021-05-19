@@ -19,7 +19,6 @@ abstract class BasePageViewModel<T>(application: Application) : BaseViewModel(ap
      */
     val items = ObservableArrayList<T>()
 
-
     val itemBinding by lazy {
         ItemBinding.of<T>(BR.item, getItemLayoutId()).bindExtra(BR.viewModel, this)
     }

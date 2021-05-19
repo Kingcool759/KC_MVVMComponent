@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".SquareFragment"
-        android:background="@color/white"
         tools:ignore="MissingDefaultResource">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -48,16 +47,16 @@
             refreshState="@{viewModel.refreshState}">
 
             <androidx.recyclerview.widget.RecyclerView
-                itemBinding="@{viewModel.itemBinding}"
-                items="@{viewModel.items}"
+                itemBinding="@{viewModel.finishLoad?viewModel.itemBinding:viewModel.skeleton}"
+                items="@{viewModel.finishLoad?viewModel.items:viewModel.skeletonItem}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/gray"
+                android:background="@color/white_dd"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_square_article_list" />
+                tools:listitem="@layout/item_square_article_layout" />
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
