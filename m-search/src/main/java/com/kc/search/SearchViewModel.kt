@@ -5,6 +5,7 @@ import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.mykotlindemo.utils.toast
+import com.kc.library.base.base.BasePageViewModel
 import com.kc.library.base.base.BaseViewModel
 import com.kc.library.base.callback.LiveDataCallback
 import com.kc.library.base.network.NetworkPortal
@@ -20,13 +21,9 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding
  * @auther KC
  * @describe 搜索功能
  */
-class SearchViewModel(application: Application,var searchType:Int,var wxId:Int,var pageNo:Int,var key:String) : BaseViewModel(application) {
+class SearchViewModel(application: Application,var searchType:Int,var wxId:Int,var key:String) : BasePageViewModel<DataX>(application) {
 
     var itemsHotKeys = MutableLiveData<List<Data>>()
-
-    var items = ObservableArrayList<DataX>()
-    val itemBinding = ItemBinding.of<DataX>(BR.item, R.layout.item_search_wxaccount_layout)
-        .bindExtra(BR.viewModel, this)
 
     init {
         getHotKey()
@@ -41,7 +38,13 @@ class SearchViewModel(application: Application,var searchType:Int,var wxId:Int,v
         )
     }
 
-    fun getSearchResult(){
+    fun onItemClick(item : DataX){
+        ARouter.getInstance().build(RouterActivityPath.WebView.WEBVIEW_ACTIVITY)
+            .withString("url",item.link)
+            .navigation()
+    }
+
+    override fun requestData(page: Int) {
         when(searchType){
             0 -> {
                 toast("传递搜索类型值错误！")
@@ -49,8 +52,19 @@ class SearchViewModel(application: Application,var searchType:Int,var wxId:Int,v
             1 -> {
                 toast("首页文章搜索")
             }
-            2 -> {
-                getWxHistoryArticles()
+            2 -> {  //公众号文章搜索
+                NetworkPortal.getService(SearchService::class.java)?.getHistoryArticles(wxId,page,key)?.enqueue(
+                    LiveDataCallback<WxAccountsDetail>(baseLiveData)
+                        .bindLoading()
+                        .bindSmartRefresh()
+                        .bindStateLayout()
+                        .doOnResponseSuccess { call, response ->
+                            items.addAll(response.data.datas)
+                            if (items.isEmpty()){
+                                toast("搜索结果为空！")
+                            }
+                        }
+                )
             }
             3 -> {
                 toast("广场文章搜索")
@@ -61,22 +75,5 @@ class SearchViewModel(application: Application,var searchType:Int,var wxId:Int,v
         }
     }
 
-    fun getWxHistoryArticles(){
-        NetworkPortal.getService(SearchService::class.java)?.getHistoryArticles(wxId,pageNo,key)?.enqueue(
-            LiveDataCallback<WxAccountsDetail>(baseLiveData)
-                .bindLoading()
-                .doOnResponseSuccess { call, response ->
-                    items.addAll(response.data.datas)
-                    if (items.isEmpty()){
-                        toast("搜索结果为空！")
-                    }
-                }
-        )
-    }
-
-    fun onItemClick(item : DataX){
-        ARouter.getInstance().build(RouterActivityPath.WebView.WEBVIEW_ACTIVITY)
-            .withString("url",item.link)
-            .navigation()
-    }
+    override fun getItemLayoutId(): Int  = R.layout.item_search_wxaccount_layout
 }

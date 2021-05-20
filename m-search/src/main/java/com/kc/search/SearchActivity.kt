@@ -31,10 +31,6 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
     @JvmField
     var wxId = 0
 
-    @Autowired
-    @JvmField
-    var pageNo = 0
-
     //搜索关键字
     var key = ""
 
@@ -43,7 +39,6 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
         super.onCreate(savedInstanceState)
         //不能在BaseMvvmActivity中使用onLoad()方法创建带参数的ViewModel对象，因为这样ARouter永远得不到传过来的值。
         //究其原因，BaseMvvmFragment中的onLoad方法是在CreatViewModel之前执行，而BaseMvvmActivity中的onLoad()方法是在之后。
-        viewModel.getHotKey()
         dataBinding.ivBack.setOnClickListener { finish() }
         doSearch()
         doClean()
@@ -72,13 +67,13 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
     private fun doSearch() {
         dataBinding.etSearch.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                viewModel.getSearchResult()
+                viewModel.refresh()
                 return@OnEditorActionListener true
             }
             false
         })
         dataBinding.tvSearch.setOnClickListener {
-            viewModel.getSearchResult()
+            viewModel.refresh()
         }
     }
 
@@ -96,7 +91,7 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
                 //点击事件
                 tvContent.setOnClickListener {
                     dataBinding.etSearch.setText(tvContent.text)
-                    viewModel.getSearchResult()
+                    viewModel.refresh()
                     toast("搜索该热词")
                 }
             }
@@ -105,6 +100,6 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
 
     override fun getViewModelFactory(): ViewModelProvider.Factory? {
         //创建含参数的ViewModel
-        return ParamViewModelFactory(BaseApplication.instance, searchType, wxId, pageNo, key)
+        return ParamViewModelFactory(BaseApplication.instance, searchType, wxId, key)
     }
 }
