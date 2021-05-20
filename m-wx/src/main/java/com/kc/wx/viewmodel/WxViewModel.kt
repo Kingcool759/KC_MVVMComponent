@@ -1,11 +1,11 @@
-package com.kc.wx
+package com.kc.wx.viewmodel
 
 import android.app.Application
-import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.kc.library.base.base.BaseViewModel
 import com.kc.library.base.callback.LiveDataCallback
 import com.kc.library.base.network.NetworkPortal
+import com.kc.wx.WxService
 import com.kc.wx.response.Account
 import com.kc.wx.response.WxAccountsResp
 

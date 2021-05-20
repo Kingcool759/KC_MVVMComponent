@@ -10,14 +10,14 @@
 
         <variable
             name="viewModel"
-            type="com.kc.wx.WxAccountViewModel" />
+            type="com.kc.wx.viewmodel.WxAccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/shape_white_radius_4dp"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="1dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="2dp"
         android:layout_height="wrap_content"
         android:onClick="@{()->viewModel.onItemClick(item)}"
         tools:ignore="MissingConstraints">
@@ -50,7 +50,6 @@
 
         <TextView
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:text="@{item.niceDate}"
             android:textSize="13sp"
@@ -83,12 +82,5 @@
             app:layout_constraintStart_toStartOf="@+id/left_Guideline"
             app:layout_constraintTop_toBottomOf="@id/public_title"
             tools:text="公众号 / 果林" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/gray"
-            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

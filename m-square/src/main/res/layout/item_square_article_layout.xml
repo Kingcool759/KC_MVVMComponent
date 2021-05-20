@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/square_list_item"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="5dp"
+        android:layout_marginHorizontal="8dp"
         android:onClick="@{()->viewModel.onItemClick(item)}"
         android:layout_marginVertical="2dp"
         android:layout_height="wrap_content"

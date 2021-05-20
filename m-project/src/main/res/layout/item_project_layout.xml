@@ -15,8 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="1dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="2dp"
         android:background="@drawable/shape_white_radius_4dp"
         android:onClick="@{()->viewModel.onItemClick(item)}"
         tools:ignore="MissingConstraints">

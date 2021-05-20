@@ -23,9 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
-            android:background="@color/gray"
-            items="@{viewModel.items}"
-            itemBinding="@{viewModel.itemBinding}"
+            android:background="@color/white_dd"
+            items="@{viewModel.finishLoad?viewModel.items:viewModel.skeletonItem}"
+            itemBinding="@{viewModel.finishLoad?viewModel.itemBinding:viewModel.skeleton}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/project_recyclerview"

@@ -55,7 +55,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager
-            android:background="@color/gray"
+            android:background="@color/white_dd"
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"

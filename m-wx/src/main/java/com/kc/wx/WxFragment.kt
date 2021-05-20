@@ -10,6 +10,7 @@ import com.kc.library.base.base.BaseMvvMFragment
 import com.kc.library.base.router.RouterActivityPath
 import com.kc.library.base.router.RouterFragmentPath
 import com.kc.wx.databinding.FragmentWxBinding
+import com.kc.wx.viewmodel.WxViewModel
 
 @Route(path = RouterFragmentPath.Wx.WX_FRAGMENT)
 class WxFragment : BaseMvvMFragment<FragmentWxBinding, WxViewModel>() {

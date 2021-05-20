@@ -10,9 +10,10 @@ import com.kc.library.base.base.BaseMvvMFragment
 import com.kc.library.base.router.RouterFragmentPath
 import com.kc.library.base.utils.ParamViewModelFactory
 import com.kc.wx.databinding.FragmentWxCountsBinding
+import com.kc.wx.viewmodel.WxAccountViewModel
 
 @Route(path = RouterFragmentPath.Wx.WX_ACCOUNTS)
-class WxCountsFragment : BaseMvvMFragment<FragmentWxCountsBinding,WxAccountViewModel>() {
+class WxCountsFragment : BaseMvvMFragment<FragmentWxCountsBinding, WxAccountViewModel>() {
 
     @JvmField
     @Autowired

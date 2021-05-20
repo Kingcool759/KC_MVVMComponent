@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.kc.wx.WxAccountViewModel" />
+            type="com.kc.wx.viewmodel.WxAccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,14 +28,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/gray"
-                itemBinding="@{viewModel.itemBinding}"
-                items="@{viewModel.items}"
+                android:background="@color/white_dd"
+                itemBinding="@{viewModel.finishLoad?viewModel.itemBinding:viewModel.skeleton}"
+                items="@{viewModel.finishLoad?viewModel.items:viewModel.skeletonItem}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_wx_account" />
+                tools:listitem="@layout/item_wxaccount_layout" />
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
