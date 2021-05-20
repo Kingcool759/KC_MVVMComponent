@@ -1,5 +1,6 @@
 package com.kc.search
 
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -28,19 +29,20 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
 
     @Autowired
     @JvmField
-    var WxId = 0
+    var wxId = 0
 
     @Autowired
     @JvmField
     var pageNo = 0
 
-    @Autowired
-    @JvmField
+    //搜索关键字
     var key = ""
 
-    override fun onLoad(viewModel: SearchViewModel) {
-        ARouter.getInstance().inject(this)
-        super.onLoad(viewModel)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        ARouter.getInstance().inject(this) //放在super之前
+        super.onCreate(savedInstanceState)
+        //不能在BaseMvvmActivity中使用onLoad()方法创建带参数的ViewModel对象，因为这样ARouter永远得不到传过来的值。
+        //究其原因，BaseMvvmFragment中的onLoad方法是在CreatViewModel之前执行，而BaseMvvmActivity中的onLoad()方法是在之后。
         viewModel.getHotKey()
         dataBinding.ivBack.setOnClickListener { finish() }
         doSearch()
@@ -57,6 +59,7 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
                 if (s.toString() == "") {
                     dataBinding.ivClear.visibility = View.GONE
                 } else {
+                    key = s.toString()  //赋值给全局变量key，用于创建ViewModel
                     dataBinding.ivClear.visibility = View.VISIBLE
                     //点击清空内容
                     dataBinding.ivClear.setOnClickListener { dataBinding.etSearch.setText("") }
@@ -69,18 +72,18 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
     private fun doSearch() {
         dataBinding.etSearch.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                viewModel.getHistoryArticles()
+                viewModel.getSearchResult()
                 return@OnEditorActionListener true
             }
             false
         })
         dataBinding.tvSearch.setOnClickListener {
-            viewModel.getHistoryArticles()
+            viewModel.getSearchResult()
         }
     }
 
-    private fun doFlowLayout(){
-        viewModel.itemsHotKeys.observe(this, { list->
+    private fun doFlowLayout() {
+        viewModel.itemsHotKeys.observe(this, { list ->
             list?.forEach {
                 //建立布局
                 val view = LayoutInflater.from(applicationContext).inflate(
@@ -93,7 +96,7 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
                 //点击事件
                 tvContent.setOnClickListener {
                     dataBinding.etSearch.setText(tvContent.text)
-                viewModel.getHistoryArticles()
+                    viewModel.getSearchResult()
                     toast("搜索该热词")
                 }
             }
@@ -102,24 +105,6 @@ class SearchActivity : BaseMvvmActivity<ActivitySearchBinding, SearchViewModel>(
 
     override fun getViewModelFactory(): ViewModelProvider.Factory? {
         //创建含参数的ViewModel
-        when(searchType){
-            0 -> {
-                toast("传递搜索类型值错误！")
-            }
-            1 -> {
-                toast("首页文章搜索")
-            }
-            2 -> {
-                toast("公众号文章搜索")
-                return ParamViewModelFactory(BaseApplication.instance, WxId, pageNo, key)
-            }
-            3 -> {
-                toast("广场文章搜索")
-            }
-            4 -> {
-                toast("项目文章搜索")
-            }
-        }
-        return ParamViewModelFactory(BaseApplication.instance, WxId, pageNo, key)  //默认搜索公众号文章
+        return ParamViewModelFactory(BaseApplication.instance, searchType, wxId, pageNo, key)
     }
 }

@@ -60,7 +60,7 @@ class WxAccountViewModel(application: Application,var id: Int) : BasePageViewMod
             .navigation()
     }
 
-    fun initSkeleton() {
+    private fun initSkeleton() {
         val json = "[{},{},{},{},{},{},{}]"
         skeletonItem.addAll(Gson().fromJson<ArrayList<DataX>>(json, object :
             TypeToken<ArrayList<DataX>>() {}.type))

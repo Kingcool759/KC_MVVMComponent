@@ -4,6 +4,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.google.android.material.tabs.TabLayout
 import com.hjq.bar.OnTitleBarListener
 import com.kc.library.base.adapter.PublicTabAdapter
 import com.kc.library.base.base.BaseMvvMFragment
@@ -17,6 +18,9 @@ class WxFragment : BaseMvvMFragment<FragmentWxBinding, WxViewModel>() {
 
     val fragments = ArrayList<Fragment>()
     val titles = ArrayList<String>()
+
+    //传递给SearchActivity的公众号ID
+    var wxId = 0
 
     override fun onLoad(view: View) {
         super.onLoad(view)
@@ -37,13 +41,15 @@ class WxFragment : BaseMvvMFragment<FragmentWxBinding, WxViewModel>() {
                 //右边
                 ARouter.getInstance().build(RouterActivityPath.Search.SEARCH_ACTIVITY)
                     .withInt("searchType",2)
+                    .withInt("wxId",wxId)
+                    .withInt("pageNo",0)
                     .navigation()
             }
         })
     }
 
     //设置TabLayout和ViewPager
-    fun setTabLayout() {
+    private fun setTabLayout() {
         viewModel.items.observe(this, { item ->
             item.forEach {
                 dataBinding.tablayout.addTab(dataBinding.tablayout.newTab().setText(it.name))
@@ -57,6 +63,20 @@ class WxFragment : BaseMvvMFragment<FragmentWxBinding, WxViewModel>() {
             dataBinding.viewPager.adapter =
                 PublicTabAdapter(childFragmentManager, fragments, titles)
             dataBinding.tablayout.setupWithViewPager(dataBinding.viewPager)
+        })
+
+        //搜索功能传递微信公众号id过去
+        dataBinding.tablayout.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {  //选中时设置选中的微信公众号ID
+                wxId = viewModel.items.value!![tab!!.position].id
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
         })
     }
 }

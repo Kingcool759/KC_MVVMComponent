@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.mykotlindemo.utils.toast
 import com.kc.library.base.base.BaseViewModel
 import com.kc.library.base.callback.LiveDataCallback
 import com.kc.library.base.network.NetworkPortal
@@ -19,7 +20,7 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding
  * @auther KC
  * @describe 搜索功能
  */
-class SearchViewModel(application: Application,var WxId:Int,var pageNo:Int,var key:String) : BaseViewModel(application) {
+class SearchViewModel(application: Application,var searchType:Int,var wxId:Int,var pageNo:Int,var key:String) : BaseViewModel(application) {
 
     var itemsHotKeys = MutableLiveData<List<Data>>()
 
@@ -39,11 +40,36 @@ class SearchViewModel(application: Application,var WxId:Int,var pageNo:Int,var k
                 }
         )
     }
-    fun getHistoryArticles(){
-        NetworkPortal.getService(SearchService::class.java)?.getHistoryArticles(WxId,pageNo,key)?.enqueue(
+
+    fun getSearchResult(){
+        when(searchType){
+            0 -> {
+                toast("传递搜索类型值错误！")
+            }
+            1 -> {
+                toast("首页文章搜索")
+            }
+            2 -> {
+                getWxHistoryArticles()
+            }
+            3 -> {
+                toast("广场文章搜索")
+            }
+            4 -> {
+                toast("项目文章搜索")
+            }
+        }
+    }
+
+    fun getWxHistoryArticles(){
+        NetworkPortal.getService(SearchService::class.java)?.getHistoryArticles(wxId,pageNo,key)?.enqueue(
             LiveDataCallback<WxAccountsDetail>(baseLiveData)
+                .bindLoading()
                 .doOnResponseSuccess { call, response ->
                     items.addAll(response.data.datas)
+                    if (items.isEmpty()){
+                        toast("搜索结果为空！")
+                    }
                 }
         )
     }
