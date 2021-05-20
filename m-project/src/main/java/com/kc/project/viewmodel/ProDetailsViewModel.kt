@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.MutableLiveData
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.mykotlindemo.utils.toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kc.library.base.BR
@@ -44,8 +45,9 @@ class ProDetailsViewModel(application: Application, var cid: Int) :
                 .bindStateLayout()
                 .doOnResponseSuccess { _, response ->
                     handleItemData(page, response.data.datas)
-                    finishLoad.postValue(true)
-                })
+                    finishLoad.postValue(true) }
+                .doOnAnyFail { toast("你的网络似乎出了点问题喔～") }
+        )
     }
 
     override fun getItemLayoutId(): Int {

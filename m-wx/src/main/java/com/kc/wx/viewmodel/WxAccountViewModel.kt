@@ -45,7 +45,9 @@ class WxAccountViewModel(application: Application,var id: Int) : BasePageViewMod
                 .doOnResponseSuccess { _, response ->
                     handleItemData(page, response.data.datas)
                     finishLoad.postValue(true)
-                })
+                }
+                .doOnAnyFail { toast("你的网络似乎出了点问题喔～") }
+        )
     }
 
     override fun getItemLayoutId(): Int {

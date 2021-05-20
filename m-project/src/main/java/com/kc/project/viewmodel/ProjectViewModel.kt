@@ -2,6 +2,7 @@ package com.kc.project.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import com.example.mykotlindemo.utils.toast
 import com.kc.library.base.base.BaseViewModel
 import com.kc.library.base.callback.LiveDataCallback
 import com.kc.library.base.network.NetworkPortal
@@ -23,7 +24,9 @@ class ProjectViewModel(application: Application) : BaseViewModel(application) {
             LiveDataCallback<ProjectTree>(baseLiveData)
                 .doOnResponseSuccess { _, response ->
                     items.postValue(response.data)
-                })
+                }
+                .doOnAnyFail { toast("你的网络似乎出了点问题喔～") }
+        )
     }
 
 }
