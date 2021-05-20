@@ -1,4 +1,4 @@
-package com.kc.m_search.response
+package com.kc.search.response
 
 import com.kc.library.base.response.BaseResponse
 

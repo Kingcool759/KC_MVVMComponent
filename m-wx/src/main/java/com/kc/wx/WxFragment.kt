@@ -35,7 +35,9 @@ class WxFragment : BaseMvvMFragment<FragmentWxBinding, WxViewModel>() {
 
             override fun onRightClick(v: View) {
                 //右边
-                ARouter.getInstance().build(RouterActivityPath.Search.SEARCH_ACTIVITY).navigation()
+                ARouter.getInstance().build(RouterActivityPath.Search.SEARCH_ACTIVITY)
+                    .withInt("searchType",2)
+                    .navigation()
             }
         })
     }

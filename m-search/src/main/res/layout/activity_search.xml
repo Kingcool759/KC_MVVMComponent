@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.kc.m_search.SearchViewModel" />
+            type="com.kc.search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SearchActivity">
+        tools:context=".SearchActivity"
+        tools:ignore="MissingConstraints">
 
         <!--搜索栏-->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,29 +41,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:background="@mipmap/doctor_search"
                 android:hint="请输入关键字"
                 android:imeOptions="actionSearch"
                 android:paddingStart="43dp"
+                android:paddingLeft="43dp"
                 android:singleLine="true"
                 android:text=""
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvSearch"
                 app:layout_constraintStart_toEndOf="@id/ivBack"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginRight="16dp"
-                android:paddingLeft="43dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/ivSearch"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:background="@drawable/ic_icon_search"
                 app:layout_constraintBottom_toBottomOf="@id/etSearch"
                 app:layout_constraintStart_toStartOf="@id/etSearch"
-                app:layout_constraintTop_toTopOf="@id/etSearch"
-                android:layout_marginLeft="16dp" />
+                app:layout_constraintTop_toTopOf="@id/etSearch" />
 
             <ImageView
                 android:id="@+id/ivClear"
@@ -73,7 +75,58 @@
                 app:layout_constraintBottom_toBottomOf="@id/etSearch"
                 app:layout_constraintRight_toRightOf="@id/etSearch"
                 app:layout_constraintTop_toTopOf="@id/etSearch" />
+
+            <TextView
+                android:id="@+id/tvSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="搜索"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hotKeyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <TextView
+                android:id="@+id/hotKeyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="最新热词：" />
+
+            <com.kc.library.base.viewgroup.FlowLayoutView
+                android:layout_marginTop="5dp"
+                android:id="@+id/flowLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/hotKeyTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            itemBinding="@{viewModel.itemBinding}"
+            items="@{viewModel.items}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hotKeyLayout"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_search_wxaccount_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

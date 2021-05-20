@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--普通点击状态改变-->
+    <item android:drawable="@drawable/flow_tv_select_shape" android:state_selected="true" />
+    <item android:drawable="@drawable/flow_tv_shape" />
+</selector>

@@ -1,4 +1,4 @@
-package com.kc.m_search
+package com.kc.search
 
 import org.junit.Test
 

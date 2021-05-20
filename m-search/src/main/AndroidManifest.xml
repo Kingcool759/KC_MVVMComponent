@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kc.m_search">
+    package="com.kc.search">
 
     <application>
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name="com.kc.search.SearchActivity"></activity>
     </application>
 
 </manifest>

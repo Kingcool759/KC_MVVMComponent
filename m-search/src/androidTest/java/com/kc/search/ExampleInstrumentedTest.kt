@@ -1,4 +1,4 @@
-package com.kc.m_search
+package com.kc.search
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

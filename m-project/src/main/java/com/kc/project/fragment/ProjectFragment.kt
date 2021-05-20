@@ -34,7 +34,9 @@ class ProjectFragment : BaseMvvMFragment<FragmentProjectBinding, ProjectViewMode
 
             override fun onRightClick(v: View) {
                 //右边
-                ARouter.getInstance().build(RouterActivityPath.Search.SEARCH_ACTIVITY).navigation()
+                ARouter.getInstance().build(RouterActivityPath.Search.SEARCH_ACTIVITY)
+                    .withInt("searchType",4)
+                    .navigation()
             }
         })
     }
