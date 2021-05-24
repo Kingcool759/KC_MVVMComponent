@@ -19,7 +19,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="265dp"
+            android:layout_height="300dp"
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -34,13 +34,13 @@
                 <!--指定的具体内容-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="265dp"
+                    android:layout_height="300dp"
                     tools:ignore="MissingConstraints">
 
                     <ImageView
                         android:id="@+id/userBgImage"
                         android:layout_width="match_parent"
-                        android:layout_height="265dp"
+                        android:layout_height="match_parent"
                         android:background="@color/white"
                         android:scaleType="centerCrop"
                         android:src="@mipmap/user_img"

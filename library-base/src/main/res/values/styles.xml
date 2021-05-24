@@ -39,9 +39,9 @@
         <item name="android:windowBackground">@color/base_half_transparent</item>
     </style>
 
-    <!--闪屏页-->
+    <!--闪屏页主题-->
     <style name="entrance_splash" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowBackground">@drawable/splash_img</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:scaleType">centerCrop</item>
         <item name="android:windowNoTitle">true</item>
