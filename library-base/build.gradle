@@ -126,4 +126,10 @@ dependencies {
     //带历史记录的搜索框
     api 'com.carson_ho:SearchLayout:1.0.1'
 
+    //文件下载-继承自FileDownLoader2（本项目中使用）
+    api 'com.liulishuo.okdownload:okdownload:1.0.7'
+
+    //动态请求应用权限
+    api 'com.permissionx.guolindev:permissionx:1.4.0'
+
 }
