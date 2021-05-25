@@ -132,4 +132,8 @@ dependencies {
     //动态请求应用权限
     api 'com.permissionx.guolindev:permissionx:1.4.0'
 
+    //给骨架布局增加闪烁效果
+    api 'io.supercharge:shimmerlayout:2.1.0'
+
+
 }

@@ -56,7 +56,7 @@ class HomeViewModel(application: Application) :BasePageViewModel<DataX>(applicat
             .navigation()
     }
 
-    fun initSkeleton(){
+    fun initSkeleton(){   //创建空对象
         val json = "[{},{},{},{},{},{},{}]"
         skeletonItem.addAll(Gson().fromJson<ArrayList<DataX>>(json,object :TypeToken<ArrayList<DataX>>(){}.type))
     }
