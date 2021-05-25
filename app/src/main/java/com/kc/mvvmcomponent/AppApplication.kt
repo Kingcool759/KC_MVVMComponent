@@ -20,23 +20,37 @@ open class AppApplication : BaseApplication() {
             // 打印日志
             ARouter.openLog()
         }
-        ARouter.init(this)
 
-        //自定义炫酷Logger
-        val formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
-            .showThreadInfo(true) // (Optional) Whether to show thread info or not. Default true
-            .methodCount(5) // (Optional) How many method line to show. Default 2
-            .methodOffset(7) // (Optional) Hides internal method calls up to offset. Default 5
-            .tag("My custom tag") // (Optional) Global tag for every log. Default PRETTY_LOGGER
-            .build()
-        Logger.addLogAdapter(AndroidLogAdapter(formatStrategy)) // 初始化Logger
+        /**
+         * 启动优化
+         */
+        Thread {
+            //设置子线程的优先级，不与主线程抢资源（必须设置优先级，不然会争抢主线程资源，无法优化启动时间）
+            android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND)
+            //子线程初始化第三方组件******
+
+            //1、路由初始化
+            ARouter.init(this)
+
+            //2、自定义炫酷Logger拦截网络请求
+            val formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
+                .showThreadInfo(true) // (Optional) Whether to show thread info or not. Default true
+                .methodCount(5) // (Optional) How many method line to show. Default 2
+                .methodOffset(7) // (Optional) Hides internal method calls up to offset. Default 5
+                .tag("My custom tag") // (Optional) Global tag for every log. Default PRETTY_LOGGER
+                .build()
+            Logger.addLogAdapter(AndroidLogAdapter(formatStrategy)) // 初始化Logger
+
+//            Thread.sleep(500) //建议延迟初始化，可以发现是否影响其它功能，或者是崩溃！
+        }.start()
 
         instance = this
 
+
         //打印被创建的Activity名称
-        registerActivityLifecycleCallbacks(object :ActivityLifecycleCallbacks{
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                Log.e("ssss",activity.javaClass.name)
+                Log.e("ssss", activity.javaClass.name)
             }
 
             override fun onActivityStarted(activity: Activity) {
