@@ -14,6 +14,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.blankj.utilcode.util.AppUtils
 import com.example.mykotlindemo.utils.toast
 import com.google.android.material.appbar.AppBarLayout
 import com.kc.library.base.base.BaseMvvMFragment
@@ -262,6 +263,7 @@ class MineFragment : BaseMvvMFragment<FragmentMineBinding, MineViewModel>() {
                 override fun completed(task: DownloadTask) {
                     toast("下载成功")
                     dataBinding.progressDownload.visibility = View.GONE
+                    AppUtils.installApp(File(Environment.getExternalStorageDirectory()!!.absolutePath,"mus.apk"))
                 }
 
                 override fun canceled(task: DownloadTask) {
@@ -320,10 +322,11 @@ class MineFragment : BaseMvvMFragment<FragmentMineBinding, MineViewModel>() {
                 if (allGranted) {
                     toast("所有申请的权限都已通过")
                     val apkDownLoadUrl =
-                        "https://gitee.com/armstrong759/apk/raw/master/apks/diyview.apk"
+                        "https://raw.githubusercontent.com/Kingcool759/gitApks/main/APK/diyview.apk" //使用github吧，挂代理下载
+//                        "https://gitee.com/armstrong759/apk/raw/master/apks/diyview.apk"//码云需要登陆才能下载，害！
 //                       //蒲公英的下载地址会过期 "https://oss.pgyer.com/be6ae68a04fe302df4c78978c18b77a4.apk?auth_key=1621845750-2f9910c18a59ea950e726a79677286b3-0-d27ec2f29cb992ca74d8940a619d4ec2&response-content-disposition=attachment%3B+filename%3DDiyView_1.0.apk"
                     val parentPath =
-                        Environment.getDownloadCacheDirectory().absolutePath //+ File.separator + "apkPath"
+                        Environment.getExternalStorageDirectory()!!.absolutePath //+ File.separator + "apkPath"
                     val parentFile = getFile("mus.apk", parentPath)
                     downLoad(parentFile.name, apkDownLoadUrl, parentFile.parentFile)
                 } else {

@@ -135,5 +135,6 @@ dependencies {
     //给骨架布局增加闪烁效果
     api 'io.supercharge:shimmerlayout:2.1.0'
 
-
+    //安装apk
+    api 'com.blankj:utilcodex:1.30.6'
 }

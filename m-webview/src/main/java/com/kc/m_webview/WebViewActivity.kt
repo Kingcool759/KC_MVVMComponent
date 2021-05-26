@@ -3,12 +3,14 @@ package com.kc.m_webview
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.kc.library.base.base.BaseActivity
+import com.kc.library.base.base.BaseApplication.Companion.webView
 import com.kc.library.base.router.RouterActivityPath
 import com.kc.m_webview.databinding.ActivityWebViewBinding
 
@@ -28,8 +30,9 @@ class WebViewActivity : BaseActivity() {
         val vBinding = ActivityWebViewBinding.inflate(layoutInflater)
         setContentView(vBinding.root)
 
-        vBinding.webView.settings.javaScriptEnabled = true
-        vBinding.webView.webChromeClient = object : WebChromeClient() {
+        vBinding.webViewContainer.addView(webView,ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT)
+        webView.settings.javaScriptEnabled = true
+        webView.webChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(view: WebView?, newProgress: Int) {
                 //显示进度条
                 vBinding.progressBar.progress = newProgress
@@ -40,6 +43,13 @@ class WebViewActivity : BaseActivity() {
                 super.onProgressChanged(view, newProgress)
             }
         }
-        vBinding.webView.loadUrl(url)
+        webView.loadUrl(url)
+    }
+
+    override fun onDestroy() {
+        (webView.parent as? ViewGroup)?.let {
+            it.removeView(webView)
+        }
+        super.onDestroy()
     }
 }

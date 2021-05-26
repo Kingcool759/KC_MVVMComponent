@@ -22,8 +22,8 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             tools:ignore="MissingConstraints" />
 
-        <WebView
-            android:id="@+id/webView"
+        <FrameLayout
+            android:id="@+id/webViewContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
