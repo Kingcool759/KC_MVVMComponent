@@ -2,7 +2,6 @@ package com.kc.library.base.base
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.webkit.WebChromeClient
 import android.webkit.WebView
 
 /**
