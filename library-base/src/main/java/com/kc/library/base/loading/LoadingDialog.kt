@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Window
 import com.kc.library.base.R
 import com.kc.library.base.databinding.BaseLoadingDialogLayoutBinding
+import com.kc.library.base.dialog.BaseDialog
 
 /**
  * @data on 5/6/21 5:48 PM

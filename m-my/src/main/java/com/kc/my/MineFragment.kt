@@ -13,11 +13,13 @@ import android.os.Environment
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.AppUtils
 import com.example.mykotlindemo.utils.toast
 import com.google.android.material.appbar.AppBarLayout
 import com.kc.library.base.base.BaseMvvMFragment
+import com.kc.library.base.dialog.DownloadDialog
 import com.kc.library.base.router.RouterFragmentPath
 import com.kc.my.databinding.FragmentMineBinding
 import com.liulishuo.okdownload.DownloadTask
@@ -105,7 +107,7 @@ class MineFragment : BaseMvvMFragment<FragmentMineBinding, MineViewModel>() {
                     intent.putExtra("", "")
                     startActivity(intent)
                 } else {
-                    toast("对应的app还没有安装喔！！！")
+//                    toast("对应的app还没有安装喔！！！")
                     //安装操作
 //                    /**
 //                     * 第一种方式：通过跳转uri方式跳转web页面下载apk
@@ -118,8 +120,13 @@ class MineFragment : BaseMvvMFragment<FragmentMineBinding, MineViewModel>() {
                      * 第二种方式：直接下载Apk（可以将需要安装的apk上传至github仓库统一管理）
                      */
 //                    val apkUrl = "https://github.com/Kingcool759/gitApks/blob/main/APK/diyview.apk" //这里不是文件地址
-//                    val apkDownLoadUrl = "https://github.com.cnpmjs.org/Kingcool759/gitApks/blob/main/APK/diyview.apk" //(加镜像也不成)文件下载地址
-                    applyPermissonS()
+//                    val apkDownLoadUrl = "https://github.com.cnpmjs.org/Kingcool759/gitApks/blob/main/APK/diyview.apk" //(加镜像也不成)
+                    val apkDownLoadUrl =
+                        "https://raw.githubusercontent.com/Kingcool759/gitApks/main/APK/diyview.apk" //使用github吧，挂代理下载
+                    val parentPath =
+                        Environment.getExternalStorageDirectory()!!.absolutePath //+ File.separator + "apkPath"
+                    val parentFile = getFile("mus.apk", parentPath)
+                    DownloadDialog(context!!,apkDownLoadUrl,false, parentFile.parentFile).show()
                 }
             }
         })
@@ -216,72 +223,6 @@ class MineFragment : BaseMvvMFragment<FragmentMineBinding, MineViewModel>() {
         return false
     }
 
-    /**
-     * 下载对应apk文件
-     */
-    fun downLoad(filename: String?, url: String?, parentFile: File?): DownloadTask? {
-        val task = DownloadTask.Builder(url!!, parentFile!!)
-            .setFilename(filename) // the minimal interval millisecond for callback progress
-            .setMinIntervalMillisCallbackProcess(30)
-            .setAutoCallbackToUIThread(true) // do re-download even if the task has already been completed in the past.
-            .setPassIfAlreadyCompleted(false)
-            .build()
-        task.enqueue(getListener())
-        return task
-    }
-
-    /**
-     * 监听下载apk状态
-     */
-    private fun getListener(): DownloadListener3 {
-        var downloadListener: DownloadListener3? = null
-        if (downloadListener == null) {
-            downloadListener = object : DownloadListener3() {
-                override fun retry(task: DownloadTask, cause: ResumeFailedCause) {}
-                override fun connected(
-                    task: DownloadTask,
-                    blockCount: Int,
-                    currentOffset: Long,
-                    totalLength: Long
-                ) {
-                }
-
-                override fun progress(
-                    task: DownloadTask,
-                    currentOffset: Long,
-                    contentLength: Long
-                ) {
-                    val progressInt = (currentOffset * 100 /( contentLength + 1)).toInt()
-                    dataBinding.progressDownload.progress = progressInt
-                }
-
-                override fun started(task: DownloadTask) {
-                    toast("正在下载最新安装包...")
-                    dataBinding.progressDownload.visibility = View.VISIBLE
-                }
-
-                override fun completed(task: DownloadTask) {
-                    toast("下载成功")
-                    dataBinding.progressDownload.visibility = View.GONE
-                    AppUtils.installApp(File(Environment.getExternalStorageDirectory()!!.absolutePath,"mus.apk"))
-                }
-
-                override fun canceled(task: DownloadTask) {
-                    toast("下载失败...")
-                }
-
-                override fun error(task: DownloadTask, e: Exception) {
-                    toast("下载失败...")
-                    e.printStackTrace()
-                }
-
-                override fun warn(task: DownloadTask) {
-                    toast("下载失败...")
-                }
-            }
-        }
-        return downloadListener
-    }
 
     /**
      * 获取手机文件路径
@@ -299,39 +240,40 @@ class MineFragment : BaseMvvMFragment<FragmentMineBinding, MineViewModel>() {
         }
         return file
     }
-
-    //欠缺：
-    //1、 手动赋予存储权限（隐私权限，需要代码给）
-    //2、 自动安装需要自己实现，调用路径完成安装
-    //3、 蒲公英的apk下载路径中key有时效性，会在一段时间后失效，需要上传至码云/阿里云稳定存储（github不挂代理无法访问）
-    /**
-     * 申请下载权限
-     */
-    private fun applyPermissonS() {
-        PermissionX.init(this)
-            .permissions(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-            .setDialogTintColor(Color.parseColor("#008577"), Color.parseColor("#83e8dd"))
-            .onExplainRequestReason { scope, deniedList ->
-                val message = "PermissionX需要您同意以下权限才能正常使用"
-                scope.showRequestReasonDialog(deniedList, message, "确定", "取消")
-            }
-            .request { allGranted, grantedList, deniedList ->
-                if (allGranted) {
-                    toast("所有申请的权限都已通过")
-                    val apkDownLoadUrl =
-                        "https://raw.githubusercontent.com/Kingcool759/gitApks/main/APK/diyview.apk" //使用github吧，挂代理下载
-//                        "https://gitee.com/armstrong759/apk/raw/master/apks/diyview.apk"//码云需要登陆才能下载，害！
-//                       //蒲公英的下载地址会过期 "https://oss.pgyer.com/be6ae68a04fe302df4c78978c18b77a4.apk?auth_key=1621845750-2f9910c18a59ea950e726a79677286b3-0-d27ec2f29cb992ca74d8940a619d4ec2&response-content-disposition=attachment%3B+filename%3DDiyView_1.0.apk"
-                    val parentPath =
-                        Environment.getExternalStorageDirectory()!!.absolutePath //+ File.separator + "apkPath"
-                    val parentFile = getFile("mus.apk", parentPath)
-                    downLoad(parentFile.name, apkDownLoadUrl, parentFile.parentFile)
-                } else {
-                    toast("您拒绝了如下权限：$deniedList,请同意后再进行下载！")
-                }
-            }
-    }
+//
+//    //欠缺：
+//    //1、 手动赋予存储权限（隐私权限，需要代码给）
+//    //2、 自动安装需要自己实现，调用路径完成安装
+//    //3、 蒲公英的apk下载路径中key有时效性，会在一段时间后失效，需要上传至码云/阿里云稳定存储（github不挂代理无法访问）
+//    /**
+//     * 申请下载权限
+//     */
+//    private fun applyPermissonS() {
+//        PermissionX.init(this)
+//            .permissions(
+//                Manifest.permission.READ_EXTERNAL_STORAGE,
+//                Manifest.permission.WRITE_EXTERNAL_STORAGE
+//            )
+//            .setDialogTintColor(Color.parseColor("#008577"), Color.parseColor("#83e8dd"))
+//            .onExplainRequestReason { scope, deniedList ->
+//                val message = "PermissionX需要您同意以下权限才能正常使用"
+//                scope.showRequestReasonDialog(deniedList, message, "确定", "取消")
+//            }
+//            .request { allGranted, grantedList, deniedList ->
+//                if (allGranted) {
+//                    toast("所有申请的权限都已通过")
+//                    val apkDownLoadUrl =
+//                        "https://raw.githubusercontent.com/Kingcool759/gitApks/main/APK/diyview.apk" //使用github吧，挂代理下载
+////                        "https://gitee.com/armstrong759/apk/raw/master/apks/diyview.apk"//码云需要登陆才能下载，害！
+////                       //蒲公英的下载地址会过期 "https://oss.pgyer.com/be6ae68a04fe302df4c78978c18b77a4.apk?auth_key=1621845750-2f9910c18a59ea950e726a79677286b3-0-d27ec2f29cb992ca74d8940a619d4ec2&response-content-disposition=attachment%3B+filename%3DDiyView_1.0.apk"
+//                    val parentPath =
+//                        Environment.getExternalStorageDirectory()!!.absolutePath //+ File.separator + "apkPath"
+//                    val parentFile = getFile("mus.apk", parentPath)
+////                    downLoad(parentFile.name, apkDownLoadUrl, parentFile.parentFile)
+//                    DownloadDialog(context!!).show()
+//                } else {
+//                    toast("您拒绝了如下权限：$deniedList,请同意后再进行下载！")
+//                }
+//            }
+//    }
 }

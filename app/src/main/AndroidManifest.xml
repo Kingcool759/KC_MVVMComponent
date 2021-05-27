@@ -4,7 +4,7 @@
     package="com.kc.mvvmcomponent">
 
     <application
-        android:name=".AppApplication"
+        android:name="com.kc.library.base.application.AppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/kcbyzjw"
         android:label="@string/app_name"

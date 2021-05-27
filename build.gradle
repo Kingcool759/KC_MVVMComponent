@@ -34,3 +34,26 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+//ali云效-下载配置
+//allprojects {
+//    repositories {
+//        maven {
+//            url 'https://maven.aliyun.com/repository/public'
+//        }
+//        maven {
+//            credentials {
+//                username '60609dfc68e8851ace93eeae'
+//                password 'kBh38jexuFUl'
+//            }
+//            url 'https://packages.aliyun.com/maven/repository/2089685-release-N6bR3k/'
+//        }
+//        maven {
+//            credentials {
+//                username '60609dfc68e8851ace93eeae'
+//                password 'kBh38jexuFUl'
+//            }
+//            url 'https://packages.aliyun.com/maven/repository/2089685-snapshot-6gNQVg/'
+//        }
+//    }
+//}

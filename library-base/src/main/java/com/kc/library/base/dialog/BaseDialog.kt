@@ -1,4 +1,4 @@
-package com.kc.library.base.loading
+package com.kc.library.base.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -7,16 +7,18 @@ import android.graphics.drawable.Drawable
 import kotlin.math.roundToInt
 
 /**
- * @data on 5/6/21 5:48 PM
+ * @data on 5/27/21 12:05 PM
  * @auther
  * @describe
  */
-open class BaseDialog : Dialog{
+open class BaseDialog : Dialog {
     constructor(context: Context) : super(context)
-
-    constructor(context: Context, resId: Int) : super(context, resId)
-
-    protected constructor(context: Context, cancel: Boolean, onCancelListener: DialogInterface.OnCancelListener?) : super(context, cancel, onCancelListener)
+    constructor(context: Context, themeResId: Int) : super(context, themeResId)
+    constructor(
+        context: Context,
+        cancelable: Boolean,
+        cancelListener: DialogInterface.OnCancelListener?
+    ) : super(context, cancelable, cancelListener)
 
     /**
      * 设置Dialog的宽度
