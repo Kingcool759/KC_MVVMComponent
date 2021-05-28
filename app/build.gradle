@@ -20,6 +20,8 @@ android {
         }else {
             manifestPlaceholders.put('APP_NAME', "组件化-正式")
         }
+        //设置多渠道打包维度
+        flavorDimensions "versionCode" //名字随便起，起啥都行
     }
 
     buildTypes {
@@ -29,16 +31,22 @@ android {
         }
     }
 
-//    //多渠道打包
-//    productFlavors {
-//        default_channel {}
-//        wandoujia {}
-//        _360 {} //或“"360"{}”，数字需下划线开头或加上双引号
-//        yingyongbao {}
-//        xiaomi {}
-//        baidu {}
-//        huawei {}
-//    }
+   //多渠道打包
+    productFlavors {
+        baidu {}
+        xiaomi {}
+        qihu360 {}
+        yingyongbao {}
+        huawei {}
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = ["channel": name]
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "driver_${variant.productFlavors[0].name}_v${variant.versionName}.apk"
+        }
+    }
 
     dataBinding {
         enabled = true  //宿主模块一定要加上，不然无法生成impl类.

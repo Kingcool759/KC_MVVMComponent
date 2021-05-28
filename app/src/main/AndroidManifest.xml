@@ -12,5 +12,13 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/app_theme"/>
+        android:theme="@style/app_theme">
+
+        <!--打多渠道包-->
+        <meta-data
+            android:name="PACKAGE_CHANNEL"
+            android:value="${channel}" />
+
+    </application>
+
 </manifest>
