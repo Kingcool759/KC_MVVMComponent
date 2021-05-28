@@ -15,6 +15,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        if (isBeta) {
+            manifestPlaceholders.put('APP_NAME', "组件化-开发")
+        }else {
+            manifestPlaceholders.put('APP_NAME', "组件化-正式")
+        }
     }
 
     buildTypes {
@@ -23,6 +28,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+//    //多渠道打包
+//    productFlavors {
+//        default_channel {}
+//        wandoujia {}
+//        _360 {} //或“"360"{}”，数字需下划线开头或加上双引号
+//        yingyongbao {}
+//        xiaomi {}
+//        baidu {}
+//        huawei {}
+//    }
 
     dataBinding {
         enabled = true  //宿主模块一定要加上，不然无法生成impl类.

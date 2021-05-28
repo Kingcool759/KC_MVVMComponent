@@ -143,28 +143,6 @@ dependencies {
 }
 
 //ali云效-设置仓库凭证
-//apply plugin: 'maven-publish'
-//uploadArchives {
-//    repositories {
-//        mavenDeployer {
-//            repository(url: 'https://packages.aliyun.com/maven/repository/2089685-release-N6bR3k/') {
-//                authentication(
-//                        userName: '60609dfc68e8851ace93eeae',
-//                        password: 'kBh38jexuFUl'
-//                )
-//            }
-//            snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2089685-snapshot-6gNQVg/') {
-//                authentication(
-//                        userName: '60609dfc68e8851ace93eeae',
-//                        password: 'kBh38jexuFUl'
-//                )
-//            }
-//            pom.version = '1.0.0'  //版本号
-//            pom.artifactId = 'kingcool-library-base'  //组件名
-//            pom.groupId = 'com.kc.library.base'  //包名
-//        }
-//    }
-//}
 apply plugin: 'maven-publish'
 afterEvaluate {
     publishing {
