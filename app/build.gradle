@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'com.alibaba.arouter'
 }
+apply plugin: 'walle'
 
 android {
     compileSdkVersion 30
@@ -21,32 +22,47 @@ android {
             manifestPlaceholders.put('APP_NAME', "组件化-正式")
         }
         //设置多渠道打包维度
-        flavorDimensions "versionCode" //名字随便起，起啥都行
+        //flavorDimensions "Free" //名字随便起，起啥都行
+    }
+
+    //签名-使用美团多渠道打包必须配置签名，不然回报错：空指针异常
+    signingConfigs {
+        release {
+            storeFile file("appKey")
+            storePassword "368396delie"
+            keyAlias "key"
+            keyPassword "368396delie"
+        }
     }
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release  //签名
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
-   //多渠道打包
-    productFlavors {
-        baidu {}
-        xiaomi {}
-        qihu360 {}
-        yingyongbao {}
-        huawei {}
-    }
-    productFlavors.all {
-        flavor -> flavor.manifestPlaceholders = ["channel": name]
-    }
-    applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = "driver_${variant.productFlavors[0].name}_v${variant.versionName}.apk"
-        }
-    }
+   //多渠道打包(AS自带)
+//    productFlavors {
+//        baidu {}
+//        xiaomi {}
+//        qihu360 {}
+//        yingyongbao {}
+//        huawei {}
+//    }
+//    productFlavors.all {
+//        flavor -> flavor.manifestPlaceholders = ["channel": name]
+//    }
+//    applicationVariants.all { variant ->
+//        variant.outputs.all {
+//            outputFileName = "driver_${variant.productFlavors[0].name}_v${variant.versionName}.apk"
+//        }
+//    }
 
     dataBinding {
         enabled = true  //宿主模块一定要加上，不然无法生成impl类.
@@ -63,6 +79,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+}
+
+//美团多渠道打包
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+    // 渠道配置文件
+    println(project.getProjectDir())
+    channelFile = new File("${project.getProjectDir()}/channel")
 }
 
 dependencies {
@@ -100,4 +128,7 @@ dependencies {
         // 搜索
         implementation project(":m-search")
     }
+
+    //美团多渠道打包
+    implementation 'com.meituan.android.walle:library:1.1.7'
 }

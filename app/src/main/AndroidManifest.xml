@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/app_theme">
 
-        <!--打多渠道包-->
-        <meta-data
-            android:name="PACKAGE_CHANNEL"
-            android:value="${channel}" />
+        <!--打多渠道包（AS自带）-->
+<!--        <meta-data-->
+<!--            android:name="PACKAGE_CHANNEL"-->
+<!--            android:value="${channel}" />-->
 
     </application>
 
