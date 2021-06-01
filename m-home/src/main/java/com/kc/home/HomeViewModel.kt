@@ -26,7 +26,7 @@ class HomeViewModel(application: Application) :BasePageViewModel<DataX>(applicat
     var finishLoad = MutableLiveData(false)
 
     val skeleton = ItemBinding.of<String>(BR.item, R.layout.item_home_article_skeleton).bindExtra(BR.viewModel, this)
-    val skeletonItem = ObservableArrayList<DataX>()
+    val skeletonItem = ObservableArrayList<DataX>()  //或者直接创建一个固定长度的List完成，不用创建空对象列表，写进BasepageViewModel中
     init {
         initSkeleton()
         refresh()
