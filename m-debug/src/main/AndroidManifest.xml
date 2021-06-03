@@ -3,7 +3,8 @@
     package="com.kc.debug">
 
     <application>
-        <activity android:name=".DebugViewActivity"></activity>
+        <activity android:name=".debugview.MutilTypeActivity"></activity>
+        <activity android:name=".DebugViewActivity" />
     </application>
 
 </manifest>

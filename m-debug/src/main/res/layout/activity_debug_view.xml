@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".DebugViewActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kc.debug.DebugViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DebugViewActivity"
+        tools:ignore="MissingConstraints">
+
+        <com.hjq.bar.TitleBar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/blue"
+            app:titleColor="@color/white"
+            app:titleSize="20sp"
+            app:barStyle="transparent"
+            app:leftBackground="@null"
+            app:title="DebugView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:itemBinding="@{viewModel.itemBinding}"
+            app:items="@{viewModel.items}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
+            tools:listitem="@layout/debug_item_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
