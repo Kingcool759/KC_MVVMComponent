@@ -44,4 +44,12 @@ class RouterActivityPath {
         private const val SEARCH = "/Search"
         const val SEARCH_ACTIVITY = "$SEARCH/search_activity"
     }
+
+    /**
+     * debugView
+     */
+    object Debug{
+        private const val DEBUG = "/debug"
+        const val DEBUG_VIEW_ACTIVITY = "$DEBUG/debug_view_activity"
+    }
 }

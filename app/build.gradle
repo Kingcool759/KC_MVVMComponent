@@ -127,6 +127,10 @@ dependencies {
         implementation project(":m-webview")
         // 搜索
         implementation project(":m-search")
+        // 收藏
+        implementation project(":m-collect")
+        // debug
+        implementation project(":m-debug")
     }
 
     //美团多渠道打包

@@ -15,8 +15,6 @@ import com.kc.m_webview.databinding.ActivityWebViewBinding
 @Route(path = RouterActivityPath.WebView.WEBVIEW_ACTIVITY)
 class WebViewActivity : BaseActivity() {
 
-    override fun isImmersionEnable(): Boolean = false
-
     @Autowired
     @JvmField
     var url = ""
@@ -68,11 +66,11 @@ class WebViewActivity : BaseActivity() {
         vBinding.webView.loadUrl(url)
     }
 
-    override fun onDestroy() {
-        //懒加载需要
+//    override fun onDestroy() {
+//        //懒加载需要
 //        (webView.parent as? ViewGroup)?.let {
 //            it.removeView(webView)
 //        }
-        super.onDestroy()
-    }
+//        super.onDestroy()
+//    }
 }

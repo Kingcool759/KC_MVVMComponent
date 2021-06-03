@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kc.collect">
+    package="com.kc.debug">
 
     <application>
-        <activity android:name=".CollectActivity" />
+        <activity android:name=".DebugViewActivity"></activity>
     </application>
+
 </manifest>

@@ -23,10 +23,10 @@ class MineViewModel(application: Application) : BaseViewModel(application) {
     init {
         items.add("我的收藏")
         items.add("我的文章")
-        items.add("我的Java系列")
-        items.add("我的Kotlin系列")
-        items.add("我的DiyView系列")
-        items.add("我的试炼场")
+        items.add("Java系列")
+        items.add("Kotlin系列")
+        items.add("DiyView系列")
+        items.add("DebugView")
         items.add("其他")
     }
 
@@ -40,16 +40,18 @@ class MineViewModel(application: Application) : BaseViewModel(application) {
                 ARouter.getInstance().build(RouterActivityPath.Collect.COLLECT_ACTIVITY).navigation()
             }
             "我的文章"->{}
-            "我的Java系列"->{
+            "Java系列"->{
                 goToJavaDemoLiveData.postValue(true)
             }
-            "我的Kotlin系列"->{
+            "Kotlin系列"->{
                 goToKotlinDemoLiveData.postValue(true)
             }
-            "我的DiyView系列"->{
+            "DiyView系列"->{
                 goToDiyDemoLiveData.postValue(true)
             }
-            "我的试炼场"->{}
+            "DebugView"->{
+                ARouter.getInstance().build(RouterActivityPath.Debug.DEBUG_VIEW_ACTIVITY).navigation()
+            }
             "其他"->{}
         }
     }

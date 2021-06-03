@@ -1,5 +1,4 @@
 apply from: "../module.build.gradle"
-apply plugin: 'kotlin-android'
 
 android {
 
@@ -9,9 +8,9 @@ android {
             applicationId "com.kc.splash"
         }
     }
-
-    //统一资源前缀，规范资源引用
-    resourcePrefix "splash_"
+//
+//    //统一资源前缀，规范资源引用
+//    resourcePrefix "splash_"
 
 }
 

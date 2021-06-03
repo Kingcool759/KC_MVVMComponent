@@ -5,12 +5,12 @@ android {
 
     defaultConfig {
         if (isBuildModule.toBoolean()) {
-            applicationId "com.kc.project"
+            applicationId "com.kc.debug"
         }
     }
 
     //统一资源前缀，规范资源引用
-//    resourcePrefix "project_"
+//    resourcePrefix "my_"
 
 }
 
@@ -21,13 +21,6 @@ dependencies {
 
     //此组件依赖base组件，把第三方库依赖都放在base中
     implementation project(':library-base')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
-
-    //Glide
-    api 'com.github.bumptech.glide:glide:4.11.0'
-
-    //刷新加载
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
 }

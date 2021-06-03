@@ -6,17 +6,19 @@ android {
             applicationId "com.kc.collect"
         }
     }
+
+    //统一资源前缀，规范资源引用
+//    resourcePrefix "my_"
+
 }
 
 dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-
-    implementation project(":library-base")
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
 
-    //刷新加载
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+    //此组件依赖base组件，把第三方库依赖都放在base中
+    implementation project(':library-base')
+
+    kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
 }

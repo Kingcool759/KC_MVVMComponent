@@ -1,3 +1,4 @@
+include ':m-debug'
 include ':m-search'
 include ':m-webview'
 include ':library-service'
