@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.kc.debug.debugview.User" />
+        <variable
+            name="viewModel"
+            type="com.kc.debug.debugview.mutiltype.MutilTypeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.ooftf.layout.kv.KvEditLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingVertical="12dp"
+            app:kvl_hint="(下拉选择)"
+            app:kvl_key="提需客户"
+            app:kvl_showEndIcon="true"
+            app:kvl_keyDrawableLeft="@drawable/providers_required"
+            app:kvl_keyDrawablePadding="10dp"
+            app:kvl_keyWidth="110dp"
+            app:kvl_textSize="16sp"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

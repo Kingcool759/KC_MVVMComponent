@@ -51,6 +51,10 @@ allprojects {
             }
             url 'https://packages.aliyun.com/maven/repository/2089685-snapshot-6gNQVg/'  //快照版，可覆盖
         }
+        //航哥私有仓库
+        maven {
+            url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+        }
     }
 }
 

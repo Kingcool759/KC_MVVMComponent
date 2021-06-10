@@ -61,8 +61,6 @@ dependencies {
     //公用的support相关库在base中依赖
     api rootProject.ext.support["design"]
     api rootProject.ext.support["appcompat-v7"]
-    //公用资源在base中依赖
-    api project(':library-res')
     //核心基础库(由于这是例子, 所以这里采用远程依赖的方式, 可根据实际情况自行换成源码依赖，源码地址：https://github.com/goldze/MVVMHabit)
 //    api rootProject.ext.dependencies.MVVMHabit  //不用他的，自己定义抽离Base层
     //阿里路由框架
@@ -138,8 +136,8 @@ dependencies {
     //安装apk
     api 'com.blankj:utilcodex:1.30.6'
 
-    //权限库
-    api 'com.github.tbruyelle:rxpermissions:0.10.2'
+    //圆角图片
+    api 'com.makeramen:roundedimageview:2.3.0'
 }
 
 //ali云效-设置仓库凭证
@@ -151,7 +149,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.kc.component'
                 artifactId = project.name
-                version = '1.0.0'
+                version = '1.2.0'
                 artifact generateSourcesJar
             }
         }

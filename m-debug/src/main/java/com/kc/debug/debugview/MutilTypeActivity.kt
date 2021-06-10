@@ -1,12 +1,10 @@
 package com.kc.debug.debugview
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import com.kc.debug.R
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.kc.debug.databinding.MutiltypeActivityViewBinding
+import com.kc.debug.debugview.mutiltype.MutilTypeViewModel
+import com.kc.library.base.base.BaseMvvmActivity
+import com.kc.library.base.router.RouterActivityPath
 
-class MutilTypeActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mutil_type)
-    }
-}
+@Route(path = RouterActivityPath.Debug.MUTIL_TYPE_ACTIVITY)
+class MutilTypeActivity : BaseMvvmActivity<MutiltypeActivityViewBinding,MutilTypeViewModel>() {}

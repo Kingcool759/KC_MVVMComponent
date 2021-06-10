@@ -14,7 +14,7 @@ android {
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         if (isBeta) {
             manifestPlaceholders.put('APP_NAME', "组件化-开发")

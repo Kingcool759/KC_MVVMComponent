@@ -61,5 +61,10 @@
       <option name="name" value="maven4" />
       <option name="url" value="https://packages.aliyun.com/maven/repository/2089685-snapshot-6gNQVg/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="https://s01.oss.sonatype.org/content/repositories/snapshots/" />
+    </remote-repository>
   </component>
 </project>

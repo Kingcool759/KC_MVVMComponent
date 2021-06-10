@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.kc.debug.debugview.Data" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff7f7f7">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <com.ooftf.layout.kv.KvEditLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingVertical="12dp"
+                app:kvl_hint="(必填)"
+                app:kvl_key="商品名称"
+                app:kvl_keyDrawableLeft="@drawable/providers_required"
+                app:kvl_keyDrawablePadding="10dp"
+                app:kvl_keyWidth="110dp"
+                app:kvl_textSize="16sp" />
+
+            <com.ooftf.layout.kv.KvEditLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingVertical="12dp"
+                android:paddingStart="34dp"
+                app:kvl_hint="(必填)"
+                app:kvl_key="商品规格"
+                app:kvl_keyWidth="92dp"
+                app:kvl_textSize="16sp"
+                android:paddingLeft="34dp" />
+
+            <com.ooftf.layout.kv.KvEditLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingVertical="12dp"
+                android:paddingLeft="33dp"
+                app:kvl_hint="(选填)"
+                app:kvl_key="商品品牌"
+                app:kvl_keyDrawablePadding="10dp"
+                app:kvl_keyWidth="95dp"
+                app:kvl_textSize="16sp" />
+
+            <com.ooftf.layout.kv.KvEditLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingVertical="12dp"
+                android:paddingLeft="33dp"
+                app:kvl_hint="(选填)"
+                app:kvl_key="参考售卖价格"
+                app:kvl_keyDrawablePadding="10dp"
+                app:kvl_keyWidth="98dp"
+                app:kvl_textSize="16sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:drawableStart="@drawable/providers_required"
+                        android:drawablePadding="8dp"
+                        android:gravity="center_vertical"
+                        android:text="是否接受替代品"
+                        android:textColor="#ff777777"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                        android:layout_marginLeft="16dp"
+                        android:drawableLeft="@drawable/providers_required" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/chooseSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:textColor="#ff333333"
+                        android:textOff="是"
+                        android:textOn="否"
+                        android:textSize="16sp"
+                        android:thumb="@drawable/need_switch_top"
+                        app:showText="true"
+                        app:switchPadding="8dp"
+                        app:track="@drawable/need_switch_bottom" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="#fff1f1f1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="MissingConstraints" />
+            </LinearLayout>
+
+
+<!--            <com.ooftf.layout.kv.KvEditLayout-->
+<!--                exOptionSelectorData="@{viewModel.requireOption}"-->
+<!--                exOptionSelectorListener="@{(o1,o2,o3,v)-> viewModel.onRequireItemClick(item,o1)}"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@color/white"-->
+<!--                android:paddingVertical="12dp"-->
+<!--                android:paddingLeft="33dp"-->
+<!--                app:kvl_hint="(选填)"-->
+<!--                app:kvl_key="客户需求量"-->
+<!--                app:kvl_showEndIcon="true"-->
+<!--                app:kvl_unit='@{item.unit}'-->
+<!--                app:kvl_keyDrawablePadding="10dp"-->
+<!--                app:kvl_keyWidth="98dp"-->
+<!--                app:kvl_textSize="16sp" />-->
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
