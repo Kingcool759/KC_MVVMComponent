@@ -138,6 +138,9 @@ dependencies {
 
     //圆角图片
     api 'com.makeramen:roundedimageview:2.3.0'
+
+    //滚动器
+    api 'com.contrarywind:Android-PickerView:4.1.9'
 }
 
 //ali云效-设置仓库凭证

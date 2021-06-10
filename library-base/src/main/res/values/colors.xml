@@ -17,4 +17,11 @@
     <color name="colorLine">#dfdfdf</color>
     <color name="dark_transparent">#24000000</color>
     <color name="light_transparent">#16000000</color>
+
+    <color name="font_gray">#FF777777</color>
+    <color name="font_orange">#ff5900</color>
+    <color name="divider">#EEEEEE</color>
+    <color name="bg_gray">#fff2f2f2</color>
+
+
 </resources>

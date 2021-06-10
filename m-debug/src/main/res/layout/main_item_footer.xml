@@ -8,7 +8,7 @@
             type="String" />
         <variable
             name="viewModel"
-            type="com.kc.debug.debugview.mutiltype.MutilTypeViewModel" />
+            type="com.kc.debug.debugview.MutilTypeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

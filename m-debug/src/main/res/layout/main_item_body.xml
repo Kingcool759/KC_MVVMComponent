@@ -7,6 +7,9 @@
         <variable
             name="item"
             type="com.kc.debug.debugview.Data" />
+        <variable
+            name="viewModel"
+            type="com.kc.debug.debugview.MutilTypeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -123,21 +126,23 @@
             </LinearLayout>
 
 
-<!--            <com.ooftf.layout.kv.KvEditLayout-->
-<!--                exOptionSelectorData="@{viewModel.requireOption}"-->
-<!--                exOptionSelectorListener="@{(o1,o2,o3,v)-> viewModel.onRequireItemClick(item,o1)}"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@color/white"-->
-<!--                android:paddingVertical="12dp"-->
-<!--                android:paddingLeft="33dp"-->
-<!--                app:kvl_hint="(选填)"-->
-<!--                app:kvl_key="客户需求量"-->
-<!--                app:kvl_showEndIcon="true"-->
-<!--                app:kvl_unit='@{item.unit}'-->
-<!--                app:kvl_keyDrawablePadding="10dp"-->
-<!--                app:kvl_keyWidth="98dp"-->
-<!--                app:kvl_textSize="16sp" />-->
+            <com.ooftf.layout.kv.KvEditLayout
+                exOptionSelectorData="@{viewModel.requireOption}"
+                exOptionSelectorListener="@{(o1,o2,o3,v)-> viewModel.onRequireItemClick(item,o1)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingVertical="12dp"
+                android:paddingLeft="33dp"
+                app:kvl_hint="(选填)"
+                app:kvl_valueLength="10"
+                app:kvl_key="客户需求量"
+                app:kvl_showEndIcon="true"
+                app:kvl_showDivider="true"
+                app:kvl_unit='@{item.unit}'
+                app:kvl_keyDrawablePadding="10dp"
+                app:kvl_keyWidth="98dp"
+                app:kvl_textSize="16sp" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
