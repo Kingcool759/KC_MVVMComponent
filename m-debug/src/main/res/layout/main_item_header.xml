@@ -25,6 +25,7 @@
             android:paddingVertical="12dp"
             app:kvl_hint="(下拉选择)"
             app:kvl_key="提需客户"
+            app:kvl_valueLines="1"
             app:kvl_valueLength="10"
             app:kvl_value='@{("").equals(viewModel.clientName)?"请选择提需客户":viewModel.clientName}'
             app:kvl_showEndIcon="true"
