@@ -4,7 +4,7 @@ import android.app.Application
 import com.example.mykotlindemo.utils.toast
 import com.kc.debug.BR
 import com.kc.debug.R
-import com.kc.debug.picker.BindingAdapter
+import com.kc.library.base.picker.BindingAdapter
 import com.kc.library.base.base.BaseViewModel
 import me.tatarka.bindingcollectionadapter2.OnItemBind
 import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList

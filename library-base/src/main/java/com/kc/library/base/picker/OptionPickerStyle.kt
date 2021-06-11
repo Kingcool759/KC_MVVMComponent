@@ -1,11 +1,11 @@
-package com.kc.debug.picker
+package com.kc.library.base.picker
 
 import android.content.Context
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.view.OptionsPickerView
-import com.kc.debug.R
+import com.kc.library.base.R
 import com.kc.library.base.utils.getActivity
 
 /**
