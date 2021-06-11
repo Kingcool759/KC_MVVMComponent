@@ -21,6 +21,7 @@ class DebugViewModel(application: Application) : BaseViewModel(application) {
     init {
         items.add("ItemBinding实现多布局")
         items.add("Tab+Recycler相互定位")
+        items.add("Picker选择日期")
     }
 
     fun onItemClick(item: String) {
@@ -31,6 +32,10 @@ class DebugViewModel(application: Application) : BaseViewModel(application) {
             }
             "Tab+Recycler相互定位" ->{
                 ARouter.getInstance().build(RouterActivityPath.Debug.TAB_SCOLL_ACTIVITY)
+                    .navigation()
+            }
+            "Picker选择日期" ->{
+                ARouter.getInstance().build(RouterActivityPath.Debug.PICKER_DATE_ACTIVITY)
                     .navigation()
             }
         }
