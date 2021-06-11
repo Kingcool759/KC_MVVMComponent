@@ -6,10 +6,10 @@
     <data>
         <variable
             name="item"
-            type="com.kc.debug.debugview.Data" />
+            type="com.kc.debug.mutiltype.Data" />
         <variable
             name="viewModel"
-            type="com.kc.debug.debugview.MutilTypeViewModel" />
+            type="com.kc.debug.mutiltype.MutilTypeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

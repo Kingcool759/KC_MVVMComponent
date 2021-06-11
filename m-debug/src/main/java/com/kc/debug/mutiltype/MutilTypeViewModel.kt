@@ -1,4 +1,4 @@
-package com.kc.debug.debugview
+package com.kc.debug.mutiltype
 
 import android.app.Application
 import com.example.mykotlindemo.utils.toast

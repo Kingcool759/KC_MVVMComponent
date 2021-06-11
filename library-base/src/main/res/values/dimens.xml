@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="rules_size_32">32sp</dimen>
+    <dimen name="rules_size_25">25sp</dimen>
+    <dimen name="rules_size_22">22sp</dimen>
+    <dimen name="rules_size_20">20sp</dimen>
+    <dimen name="rules_size_19">19sp</dimen>
+    <dimen name="rules_size_18">18sp</dimen>
+    <dimen name="rules_size_17">17sp</dimen>
+    <dimen name="rules_size_16">16sp</dimen>
+    <dimen name="rules_size_15">15sp</dimen>
+    <dimen name="rules_size_14">14sp</dimen>
+    <dimen name="rules_size_13">13sp</dimen>
+    <dimen name="rules_size_12">12sp</dimen>
+    <dimen name="rules_size_11">11sp</dimen>
+    <dimen name="rules_size_10">10sp</dimen>
+    <dimen name="rules_size_5">5sp</dimen>
+    <dimen name="rules_size_8">8sp</dimen>
+    <dimen name="rules_size_9">9sp</dimen>
+    <dimen name="rules_size_30">30sp</dimen>
+    <dimen name="base_divider">0.5dp</dimen>
+</resources>

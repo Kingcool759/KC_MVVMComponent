@@ -1,4 +1,4 @@
-package com.kc.debug.debugview
+package com.kc.debug.mutiltype
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.kc.debug.databinding.MutiltypeActivityViewBinding

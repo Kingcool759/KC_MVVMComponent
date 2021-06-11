@@ -1,4 +1,4 @@
-package com.kc.debug.debugview
+package com.kc.debug.mutiltype
 
 /**
  * @data on 2021/6/10 11:03 上午

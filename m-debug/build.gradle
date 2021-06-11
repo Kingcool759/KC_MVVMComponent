@@ -23,6 +23,7 @@ dependencies {
     //此组件依赖base组件，把第三方库依赖都放在base中
     implementation project(':library-base')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'com.google.android.material:material:1.2.1'
 
     kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
 

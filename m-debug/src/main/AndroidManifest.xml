@@ -3,8 +3,9 @@
     package="com.kc.debug">
 
     <application>
-        <activity android:name=".debugview.MutilTypeActivity"></activity>
+        <activity android:name=".mutiltype.MutilTypeActivity" />
         <activity android:name=".DebugViewActivity" />
+        <activity android:name=".tabscroll.TabActivity"/>
     </application>
 
 </manifest>

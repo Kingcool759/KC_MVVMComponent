@@ -141,6 +141,9 @@ dependencies {
 
     //滚动器
     api 'com.contrarywind:Android-PickerView:4.1.9'
+
+    //XTabLayout-- TabLayout的拓展版
+    api 'com.androidkun:XTabLayout:1.1.5'
 }
 
 //ali云效-设置仓库凭证

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kc.debug.tabscroll.TabActivity"
+    tools:ignore="MissingConstraints">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.kc.debug.tabscroll.TabViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--类型tab-->
+        <com.androidkun.xtablayout.XTabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/blue"
+            android:paddingTop="12dp"
+            android:paddingBottom="5dp"
+            app:xTabIndicatorColor="#295FFF"
+            app:xTabIndicatorHeight="2dp"
+            app:xTabIndicatorWidth="20dp"
+            app:xTabSelectedTextColor="@color/black"
+            app:xTabSelectedTextSize="18dp"
+            app:xTabTextColor="@color/alpha_60_black"
+            app:xTabTextSelectedBold="true"
+            app:xTabTextSize="@dimen/rules_size_18" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:itemCount="6"
+            tools:listitem="@layout/scroll_tab_body"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:items = '@{viewModel.items}'
+            app:itemBinding = '@{viewModel.itemBinding}'
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

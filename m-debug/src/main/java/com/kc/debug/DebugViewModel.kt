@@ -15,14 +15,23 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding
  */
 class DebugViewModel(application: Application) : BaseViewModel(application) {
     val items = ObservableArrayList<String>()
-    val itemBinding = ItemBinding.of<String>(BR.item,R.layout.debug_item_layout).bindExtra(BR.viewModel,this)
+    val itemBinding =
+        ItemBinding.of<String>(BR.item, R.layout.debug_item_layout).bindExtra(BR.viewModel, this)
+
     init {
-        items.add( "ItemBinding实现多布局" )
+        items.add("ItemBinding实现多布局")
+        items.add("Tab+Recycler相互定位")
     }
-    fun onItemClick(item:String){
-        when(item){
-            "ItemBinding实现多布局" ->{
-                ARouter.getInstance().build(RouterActivityPath.Debug.MUTIL_TYPE_ACTIVITY).navigation()
+
+    fun onItemClick(item: String) {
+        when (item) {
+            "ItemBinding实现多布局" -> {
+                ARouter.getInstance().build(RouterActivityPath.Debug.MUTIL_TYPE_ACTIVITY)
+                    .navigation()
+            }
+            "Tab+Recycler相互定位" ->{
+                ARouter.getInstance().build(RouterActivityPath.Debug.TAB_SCOLL_ACTIVITY)
+                    .navigation()
             }
         }
     }
