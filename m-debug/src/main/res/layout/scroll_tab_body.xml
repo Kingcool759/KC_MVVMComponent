@@ -7,13 +7,26 @@
             name="item"
             type="com.kc.debug.tabscroll.Item" />
 
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="viewModel"
+            type="com.kc.debug.tabscroll.TabViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
+        android:onClick="@{()->viewModel.onItemClick(item,position)}"
         android:orientation="vertical">
+
+        <!--
+        第二种方式，直接布局中用到这样写：
+        代码中获取当前position：viewModel.items.indexOf(item)
+        -->
 
         <TextView
             android:layout_width="match_parent"
