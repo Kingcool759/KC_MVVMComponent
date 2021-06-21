@@ -43,5 +43,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //此组件依赖base组件，把第三方库依赖都放在base中
-    implementation project(':library-base')
+    implementation projectCompat(':library-base')
 }

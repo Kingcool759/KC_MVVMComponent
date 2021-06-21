@@ -1,17 +1,39 @@
-include ':m-debug'
-include ':m-search'
-include ':m-webview'
-include ':library-service'
-include ':library-res'
-include ':library-network'
-include ':library-base'
-include ':m-collect'
-include ':m-project'
-include ':m-square'
-include ':m-splash'
-include ':m-wx'
-include ':m-my'
-include ':m-login'
-include ':m-home'
-include ':app'
+includeCompat ':m-debug'
+includeCompat ':m-search'
+includeCompat ':m-webview'
+includeCompat ':library-service'
+includeCompat ':library-res'
+includeCompat ':library-network'
+includeCompat ':library-base'
+includeCompat ':m-collect'
+includeCompat ':m-project'
+includeCompat ':m-square'
+includeCompat ':m-splash'
+includeCompat ':m-wx'
+includeCompat ':m-my'
+includeCompat ':m-login'
+includeCompat ':m-home'
+includeCompat ':app'
 rootProject.name = "KC_MVVMComponent"
+def includeCompat(String name) {
+    if (!isMaven(name)) {
+        include(name)
+    }
+}
+
+def isMaven(String name) {
+    println("isMaven" + name)
+    Properties properties = new Properties()
+    def file = new File("${name.replace(":", "")}/maven.properties")
+    if (file.exists()) {
+        InputStream inputStream = file.newDataInputStream()
+        properties.load(inputStream)
+        def str = properties.getProperty('MAVEN')
+        if (str == null) {
+            return false
+        } else {
+            return Boolean.parseBoolean(str)
+        }
+    }
+    return false
+}

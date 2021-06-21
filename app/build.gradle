@@ -104,7 +104,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //组件化配置
-    implementation project(":library-base")
+    implementation projectCompat(":library-base")
     if (isBuildModule.toBoolean()) {
         //当组件独立运行时，需要把基础库依赖到宿主app项目上
     } else {
@@ -112,25 +112,25 @@ dependencies {
         //如果是作为组件，需要把各个组件依赖到App宿主上
 
         // 启动页
-        implementation project(":m-splash")
+        implementation projectCompat(":m-splash")
         // 首页
-        implementation project(":m-home")
+        implementation projectCompat(":m-home")
         // 用户
-        implementation project(":m-my")
+        implementation projectCompat(":m-my")
         // 公众号
-        implementation project(":m-wx")
+        implementation projectCompat(":m-wx")
         // 广场
-        implementation project(":m-square")
+        implementation projectCompat(":m-square")
         // 项目
-        implementation project(":m-project")
+        implementation projectCompat(":m-project")
         // webView
-        implementation project(":m-webview")
+        implementation projectCompat(":m-webview")
         // 搜索
-        implementation project(":m-search")
+        implementation projectCompat(":m-search")
         // 收藏
-        implementation project(":m-collect")
+        implementation projectCompat(":m-collect")
         // debug
-        implementation project(":m-debug")
+        implementation projectCompat(":m-debug")
     }
 
     //美团多渠道打包

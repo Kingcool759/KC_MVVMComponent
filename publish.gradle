@@ -1,0 +1,35 @@
+//发布依赖库到Maven仓库
+apply plugin: 'maven-publish'
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+// Finally publish the artifact
+afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+//            if (ARTIFACT_VERSION.endsWith("SNAPSHOT")) {
+//                url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+//            } else {
+//                url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+//            }
+                credentials {
+                    username "kingcool759"
+                    password "368396delieZJW#"
+                }
+            }
+        }
+        publications {
+            release(MavenPublication) {
+                from components.release
+                artifact generateSourcesJar
+                groupId = "io.github.Kingcool759" //申请时填写的域名
+                artifactId = mavenArtifactId(project.name)
+                version = mavenVersion(project.name)
+            }
+        }
+    }
+}

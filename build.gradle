@@ -3,6 +3,67 @@ apply from: "config.gradle"
 
 buildscript {
     ext.kotlin_version = "1.4.31"
+
+    ext.isMaven = { name ->
+        Properties properties = new Properties()
+        def file = rootProject.file("${name}/maven.properties")
+        if (file.exists()) {
+            InputStream inputStream = file.newDataInputStream()
+            properties.load(inputStream)
+            def str = properties.getProperty('MAVEN')
+            println("maven::${name+"  "+str}")
+            if (str == null) {
+                return false
+            } else {
+                return Boolean.parseBoolean(str)
+            }
+        }
+        return false
+    }
+
+    ext.mavenArtifactId = { name ->
+        Properties properties = new Properties()
+        def file = rootProject.file("${name}/maven.properties")
+        if (file.exists()) {
+            InputStream inputStream = file.newDataInputStream()
+            properties.load(inputStream)
+            def str = properties.getProperty('ARTEFACT_ID')
+            println("mavenArtifactId::${name+"  "+str}")
+            if (str == null) {
+                throw Exception(file.path + "    ARTEFACT_ID == null")
+            } else {
+                return str
+            }
+        }
+        return ""
+    }
+
+    ext.mavenVersion = { name ->
+        Properties properties = new Properties()
+        def file = rootProject.file("${name}/maven.properties")
+        if (file.exists()) {
+            InputStream inputStream = file.newDataInputStream()
+            properties.load(inputStream)
+            def str = properties.getProperty('VERSION')
+            println("mavenVersion::${name+"  "+str}")
+            if (str == null) {
+                throw Exception(file.path + "    VERSION == null")
+            } else {
+                return str
+            }
+        }
+        return ""
+    }
+
+    ext.projectCompat = { name ->
+        def realName = name.replace(":", "")
+        if (isMaven(realName)) {
+            return "io.Kingcool759.com:${realName}:${mavenVersion(realName)}"
+        } else {
+            return project(name)
+        }
+    }
+
     repositories {
         google()
         jcenter()
