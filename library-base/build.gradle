@@ -146,32 +146,63 @@ dependencies {
     api 'com.androidkun:XTabLayout:1.1.5'
 }
 
-//ali云效-设置仓库凭证
-apply plugin: 'maven-publish'
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.kc.component'
-                artifactId = project.name
-                version = '1.3.0'  //新增PickerView
-                artifact generateSourcesJar
-            }
-        }
-        repositories {
-            maven {
-                url = "https://packages.aliyun.com/maven/repository/2106192-release-c13sb7/"
-                credentials {
-                    username = '60ae3c8d750bbcd1c036f35d'
-                    password = 'lkxRfF4QEI2n'
-                }
-            }
-        }
-    }
-}
+////ali云效-设置仓库凭证 - 推送
+//apply plugin: 'maven-publish'
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.kc.component'
+//                artifactId = project.name
+//                version = '1.3.0'  //新增PickerView
+//                artifact generateSourcesJar
+//            }
+//        }
+//        repositories {
+//            maven {
+//                url = "https://packages.aliyun.com/maven/repository/2106192-release-c13sb7/"
+//                credentials {
+//                    username = '60ae3c8d750bbcd1c036f35d'
+//                    password = 'lkxRfF4QEI2n'
+//                }
+//            }
+//        }
+//    }
+//}
 
+//发布依赖库到Maven仓库
+apply plugin: 'maven-publish'
 task generateSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier 'sources'
+}
+
+// Finally publish the artifact
+afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+//            if (ARTIFACT_VERSION.endsWith("SNAPSHOT")) {
+//                url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+//            } else {
+//                url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+//            }
+                credentials {
+                    username "kingcool759"
+                    password "368396delieZJW#"
+                }
+            }
+        }
+        publications {
+            release(MavenPublication) {
+                from components.release
+                artifact generateSourcesJar
+                groupId "io.github.Kingcool759" //申请时填写的域名
+                artifactId "lib-base"
+                version "1.0.0-SNAPSHOT"
+            }
+        }
+    }
 }

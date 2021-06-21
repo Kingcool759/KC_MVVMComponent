@@ -28,4 +28,5 @@ dependencies {
     kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
 
     implementation 'com.github.ooftf:kv-layout:1.0.9'
+
 }
