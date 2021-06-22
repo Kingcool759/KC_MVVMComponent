@@ -22,12 +22,10 @@ class MineViewModel(application: Application) : BaseViewModel(application) {
 
     init {
         items.add("我的收藏")
-        items.add("我的文章")
         items.add("Java系列")
         items.add("Kotlin系列")
         items.add("DiyView系列")
         items.add("DebugView")
-        items.add("其他")
     }
 
     val goToJavaDemoLiveData = MutableLiveData(false)
@@ -39,7 +37,6 @@ class MineViewModel(application: Application) : BaseViewModel(application) {
             "我的收藏"->{
                 ARouter.getInstance().build(RouterActivityPath.Collect.COLLECT_ACTIVITY).navigation()
             }
-            "我的文章"->{}
             "Java系列"->{
                 goToJavaDemoLiveData.postValue(true)
             }
@@ -52,7 +49,6 @@ class MineViewModel(application: Application) : BaseViewModel(application) {
             "DebugView"->{
                 ARouter.getInstance().build(RouterActivityPath.Debug.DEBUG_VIEW_ACTIVITY).navigation()
             }
-            "其他"->{}
         }
     }
 }

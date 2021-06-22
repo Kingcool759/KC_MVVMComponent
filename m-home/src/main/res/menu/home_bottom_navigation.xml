@@ -10,25 +10,25 @@
     <item
         android:id="@+id/wechat"
         android:enabled="true"
-        android:icon="@drawable/select_bottom_nac_wechat"
+        android:icon="@drawable/select_bottom_nac_wx"
         android:title="公众号"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/project"
         android:enabled="true"
-        android:icon="@drawable/select_bottom_nac_project"
+        android:icon="@drawable/select_bottom_nac_square"
         android:title="广场"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/system"
         android:enabled="true"
-        android:icon="@drawable/select_bottom_nac_system"
+        android:icon="@drawable/select_bottom_nac_project"
         android:title="项目"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/setting"
         android:enabled="true"
-        android:icon="@drawable/select_bottom_nac_setting"
+        android:icon="@drawable/select_bottom_nac_mine"
         android:title="我的"
         app:showAsAction="ifRoom" />
 

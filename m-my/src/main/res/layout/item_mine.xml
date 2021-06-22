@@ -25,7 +25,7 @@
             tools:text="我的收藏"
             android:text="@{item}"
             android:textSize="16sp"
-            android:textColor="@color/black_88"
+            android:textColor="@color/black"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginLeft="12dp"
             android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
             android:layout_marginRight="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black_88"
+            android:textColor="@color/black"
             android:text=">"
             app:layout_constraintRight_toRightOf="parent" />
 
