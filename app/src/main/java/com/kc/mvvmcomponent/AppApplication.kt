@@ -1,4 +1,4 @@
-package com.kc.library.base.application
+package com.kc.mvvmcomponent
 
 import android.app.Activity
 import android.app.Application
@@ -7,6 +7,7 @@ import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.kc.library.base.BuildConfig
 import com.kc.library.base.base.BaseApplication
+import com.ooftf.director.app.Director
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.FormatStrategy
 import com.orhanobut.logger.Logger
@@ -21,6 +22,10 @@ open class AppApplication : BaseApplication() {
             // 打印日志
             ARouter.openLog()
         }
+        //1、路由初始化
+        ARouter.init(this)  //凡是app组件中用到的ARouter，必须要保证它先都进行了初始化，因此不能放进子线程中。
+        //didi-Dokit
+        Director.init("f6637fc66d9b4096acdd5c13bf2061b6", false)
 
         /**
          * 启动优化
@@ -30,9 +35,6 @@ open class AppApplication : BaseApplication() {
             android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND)
             //子线程初始化第三方组件******
 
-            //1、路由初始化
-            ARouter.init(this)
-
             //2、自定义炫酷Logger拦截网络请求
             val formatStrategy: FormatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(true) // (Optional) Whether to show thread info or not. Default true
@@ -41,6 +43,7 @@ open class AppApplication : BaseApplication() {
                 .tag("My custom tag") // (Optional) Global tag for every log. Default PRETTY_LOGGER
                 .build()
             Logger.addLogAdapter(AndroidLogAdapter(formatStrategy)) // 初始化Logger
+
 
 //            Thread.sleep(500) //建议延迟初始化，可以发现是否影响其它功能，或者是崩溃！
         }.start()

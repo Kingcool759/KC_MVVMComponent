@@ -1,14 +1,11 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'com.alibaba.arouter'
-}
-apply plugin: 'walle'
-
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply from: 'dokit.gradle'
+//apply plugin: 'walle'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
     defaultConfig {
         applicationId "com.kc.mvvmcomponent"
         minSdkVersion 26
@@ -37,7 +34,7 @@ android {
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release  //签名
+//            signingConfig signingConfigs.release  //签名
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -83,15 +80,15 @@ android {
 }
 
 //美团多渠道打包
-walle {
-    // 指定渠道包的输出路径
-    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
-    // 定制渠道包的APK的文件名称
-    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
-    // 渠道配置文件
-    println(project.getProjectDir())
-    channelFile = new File("${project.getProjectDir()}/channel")
-}
+//walle {
+//    // 指定渠道包的输出路径
+//    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+//    // 定制渠道包的APK的文件名称
+//    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+//    // 渠道配置文件
+//    println(project.getProjectDir())
+//    channelFile = new File("${project.getProjectDir()}/channel")
+//}
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -104,7 +101,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //组件化配置
-    implementation projectCompat(":library-base")
+    implementation project(":library-base")
     if (isBuildModule.toBoolean()) {
         //当组件独立运行时，需要把基础库依赖到宿主app项目上
     } else {
@@ -136,3 +133,6 @@ dependencies {
     //美团多渠道打包
     implementation 'com.meituan.android.walle:library:1.1.7'
 }
+
+//new Throwable().printStackTrace()  //打印堆栈
+//println(this.getClass())

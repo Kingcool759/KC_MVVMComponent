@@ -19,7 +19,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     //此组件依赖base组件，把第三方库依赖都放在base中
-    implementation projectCompat(':library-base')
+    implementation project(':library-base')
 
-    kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
+    kapt 'com.alibaba:arouter-compiler:1.5.1' //每个组件模块都需要
 }

@@ -144,6 +144,9 @@ dependencies {
 
     //XTabLayout-- TabLayout的拓展版
     api 'com.androidkun:XTabLayout:1.1.5'
+
+    //dokit封装
+    api 'com.github.ooftf:director:1.3.2'
 }
 
 ////ali云效-设置仓库凭证 - 推送

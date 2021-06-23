@@ -27,4 +27,8 @@ dependencies {
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
 
     kapt 'com.alibaba:arouter-compiler:1.2.2' //每个组件模块都需要
+
+    //Kotlin协程所需的依赖库
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
 }
