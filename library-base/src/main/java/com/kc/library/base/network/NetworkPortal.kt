@@ -2,6 +2,7 @@ package com.kc.library.base.network
 
 
 import com.example.mykotlindemo.utils.HttpLogger
+import com.ooftf.director.app.Director
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -29,6 +30,9 @@ object NetworkPortal {
             .addInterceptor(HttpLoggingInterceptor(HttpLogger()).setLevel(HttpLoggingInterceptor.Level.BODY))
         createHostnameVerifier()?.let { builder.hostnameVerifier(it) }
         /* json 拦截 */
+
+        Director.applyDirectorInterceptor(builder)  //dokit显示网络请求数据需要
+
         createSSlSocket()?.let {
             builder.sslSocketFactory(it, object : X509TrustManager {
                 @Throws(CertificateException::class)
