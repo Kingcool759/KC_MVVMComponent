@@ -1,9 +1,7 @@
 ## 组件化部分划分-wanAndroid项目（2021/04/08）
 
 ### 界面截图
-//并行展示
-<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img1.jpg" width="180" height="105"><img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img2.jpg" width="180" height="105"><img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img3.jpg" width="180" height="105"/>
-//单个展示
+<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img1.jpg" width="864" height="1920"><img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img2.jpg" width="864" height="1920"><img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img3.jpg" width="864" height="1920"/>
 ![截图4](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img4.jpg)
 ![截图5](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img5.jpg)
 ![截图6](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img6.jpg)
