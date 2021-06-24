@@ -1,21 +1,5 @@
 ## 组件化部分划分-wanAndroid项目（2021/04/08）
 
-### 界面截图
-<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img1.jpg" width="257" height="540"><img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img2.jpg" width="257" height="540"><img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img3.jpg" width="257" height="540"/>
-![截图4](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img4.jpg)
-![截图5](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img5.jpg)
-![截图6](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img6.jpg)
-![截图7](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img7.jpg)
-![截图8](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img8.jpg)
-![截图9](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img9.jpg)
-![截图10](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img10.jpg)
-![截图11](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img11.jpg)
-![截图12](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img12.jpg)
-![截图13](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img13.jpg)
-![截图14](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img14.jpg)
-![截图15](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img15.jpg)
-![截图16](https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img16.jpg)
-
 ### 功能模块组件划分
 - 首页（m-home）
 - 我的（m-my）
@@ -31,6 +15,15 @@
 - 搜索 (m-search)
 - 收藏 (m-collect)
 - 调试 (m-debug)
+
+### 界面截图
+<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img1.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img2.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img3.jpg" width="257" height="540"/>
+<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img4.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img5.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img6.jpg" width="257" height="540"/>
+<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img7.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img8.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img9.jpg" width="257" height="540"/>
+<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img10.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img11.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img12.jpg" width="257" height="540"/>
+<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img13.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img14.jpg" width="257" height="540">  <img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img15.jpg" width="257" height="540"/>
+<img src="https://github.com/Kingcool759/Project_Images/blob/main/wanAndroid/img16.jpg" width="257" height="540">
+
 ### 推送到远程Maven仓库
 - library-base(抽取的Base)
 目前依赖库更新至1.0.1版本：
