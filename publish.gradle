@@ -7,9 +7,9 @@ task generateSourcesJar(type: Jar) {
 }
 
 //上传maven公开库需要签名
-ext["signing.keyId"] = "755735CF"  //GPG指纹后8位
+ext["signing.keyId"] = "141399E4"  //GPG指纹后8位
 ext["signing.password"] = "368396delie"  //GPG密码
-ext["signing.secretKeyRingFile"] = "/Users/zhaojianwei/.gnupg/signing/private-key.gpg" //GPG私钥文件在本地的文件目录
+ext["signing.secretKeyRingFile"] = "/Users/zhaojianwei/.gnupg/signing/jianweizhao_0x141399E4_SECRET.gpg" //GPG私钥文件在本地的文件目录
 
 // Finally publish the artifact
 afterEvaluate {
