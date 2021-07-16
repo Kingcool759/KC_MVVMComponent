@@ -1,7 +1,7 @@
 package com.kc.library.base.network
 
 
-import com.example.mykotlindemo.utils.HttpLogger
+import com.kc.library.base.utils.HttpLogger
 import com.ooftf.director.app.Director
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient

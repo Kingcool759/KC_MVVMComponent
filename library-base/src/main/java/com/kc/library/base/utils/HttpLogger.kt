@@ -1,6 +1,5 @@
-package com.example.mykotlindemo.utils
+package com.kc.library.base.utils
 
-import com.kc.library.base.utils.JsonUtil
 import com.orhanobut.logger.Logger
 import okhttp3.logging.HttpLoggingInterceptor
 

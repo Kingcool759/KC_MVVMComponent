@@ -97,24 +97,24 @@ allprojects {
             url "https://dl.bintray.com/ooftf/maven"
         }
         mavenLocal()
-        //远程自建仓库下载配置
-        maven {
-            url 'https://maven.aliyun.com/repository/public'
-        }
-        maven {
-            url = "https://packages.aliyun.com/maven/repository/2106192-release-c13sb7/"  //线上版
-            credentials {
-                username = '60ae3c8d750bbcd1c036f35d'
-                password = 'lkxRfF4QEI2n'
-            }
-        }
-        maven {
-            credentials {
-                username '60609dfc68e8851ace93eeae'
-                password 'kBh38jexuFUl'
-            }
-            url 'https://packages.aliyun.com/maven/repository/2089685-snapshot-6gNQVg/'  //快照版，可覆盖
-        }
+//        //远程自建仓库下载配置[ali云效库]
+//        maven {
+//            url 'https://maven.aliyun.com/repository/public'
+//        }
+//        maven {
+//            url = "https://packages.aliyun.com/maven/repository/2106192-release-c13sb7/"  //线上版
+//            credentials {
+//                username = '60ae3c8d750bbcd1c036f35d'
+//                password = 'lkxRfF4QEI2n'
+//            }
+//        }
+//        maven {
+//            credentials {
+//                username '60609dfc68e8851ace93eeae'
+//                password 'kBh38jexuFUl'
+//            }
+//            url 'https://packages.aliyun.com/maven/repository/2089685-snapshot-6gNQVg/'  //快照版，可覆盖
+//        }
     }
 }
 

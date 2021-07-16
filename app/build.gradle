@@ -34,7 +34,7 @@ android {
 
     buildTypes {
         release {
-//            signingConfig signingConfigs.release  //签名
+            signingConfig signingConfigs.release  //签名
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

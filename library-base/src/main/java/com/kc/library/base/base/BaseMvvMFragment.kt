@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.kc.library.base.BR
+import com.kc.library.base.ext.getVClass
+import com.kc.library.base.ext.getVmClass
 import com.kc.library.base.livedata.BaseLiveDataObserver
 import com.orhanobut.logger.Logger
 

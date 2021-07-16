@@ -1,4 +1,4 @@
-package com.kc.library.base.base;
+package com.kc.library.base.ext;
 
 import java.lang.reflect.ParameterizedType
 

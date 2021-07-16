@@ -1,21 +1,27 @@
 //发布依赖库到Maven仓库
 apply plugin: 'maven-publish'
+apply plugin: 'signing'
 task generateSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier 'sources'
 }
+
+//上传maven公开库需要签名
+ext["signing.keyId"] = "755735CF"  //GPG指纹后8位
+ext["signing.password"] = "368396delie"  //GPG密码
+ext["signing.secretKeyRingFile"] = "/Users/zhaojianwei/.gnupg/signing/private-key.gpg" //GPG私钥文件在本地的文件目录
 
 // Finally publish the artifact
 afterEvaluate {
     publishing {
         repositories {
             maven {
-                url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-//            if (ARTIFACT_VERSION.endsWith("SNAPSHOT")) {
-//                url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-//            } else {
-//                url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-//            }
+                name = 'sonatypeRepository' // 名字可随意，会显示在 task 中
+                if (version.endsWith("SNAPSHOT")) {
+                    url "https://s01.oss.sonatype.org/content/repositories/snapshots/"  //快照版本库
+                } else {
+                    url "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"  //正式版本库
+                }
                 credentials {
                     username "kingcool759"
                     password "368396delieZJW#"
@@ -29,7 +35,34 @@ afterEvaluate {
                 groupId = "io.github.Kingcool759" //申请时填写的域名
                 artifactId = mavenArtifactId(project.name)
                 version = mavenVersion(project.name)
+
+                pom {
+                    name = project.name// 推荐和 artifactId 相同
+                    description = "noting to description"
+                    url = "https://github.com/Kingcool759/KC_MVVMComponent"  //项目主页地址，可用 GitHub
+                    licenses {
+                        license {
+                            name = "The Apache License, Version 2.0"
+                            url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    }
+                    developers {
+                        developer {  //随意填开发者信息
+                            id = "007"
+                            name = "kingcool759"
+                            email = "3058587756@qq.com"
+                        }
+                    }
+                    scm {
+                        connection = "scm:svn:http://github.com/Kingcool759/KC_MVVMComponent"   //项目联系地址
+                        developerConnection = "scm:svn:https://github.com/Kingcool759/KC_MVVMComponent"  //项目仓库地址
+                        url = "http://github.com/Kingcool759/KC_MVVMComponent" //项目主页地址
+                    }
+                }
             }
         }
+    }
+    signing {
+        sign publishing.publications  //签名
     }
 }
