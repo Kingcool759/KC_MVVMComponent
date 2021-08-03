@@ -54,5 +54,6 @@ class RouterActivityPath {
         const val MUTIL_TYPE_ACTIVITY = "$DEBUG/mutil_type_activity"
         const val TAB_SCOLL_ACTIVITY = "$DEBUG/tab/Scroll"
         const val PICKER_DATE_ACTIVITY = "$DEBUG/picker/date"
+        const val MOVE_CONFICT_ACTIVITY = "$DEBUG/move/confict"
     }
 }

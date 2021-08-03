@@ -3,10 +3,11 @@
     package="com.kc.debug">
 
     <application>
+        <activity android:name=".moveconfict.MoveConfictActivity"></activity>
         <activity android:name=".mutiltype.MutilTypeActivity" />
         <activity android:name=".DebugViewActivity" />
-        <activity android:name=".tabscroll.TabActivity"/>
-        <activity android:name=".pickerdate.PickerActivity"/>
+        <activity android:name=".tabscroll.TabActivity" />
+        <activity android:name=".pickerdate.PickerActivity" />
     </application>
 
 </manifest>
